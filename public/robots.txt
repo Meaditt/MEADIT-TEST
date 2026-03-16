@@ -1,0 +1,13 @@
+# Robots.txt for AI Agency Website
+# https://www.robotstxt.org/robotstxt.html
+
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Disallow admin/private paths (if any in the future)
+# Disallow: /admin/
+# Disallow: /api/
+
+# Sitemap location
+Sitemap: https://example.com/sitemap.xml

@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(tree -L 3 -I 'node_modules|.next' /c/Users/Dylan/Downloads/agency-website-main 2>/dev/null || find /c/Users/Dylan/Downloads/agency-website-main -not -path '*/node_modules/*' -not -path '*/.next/*' -not -path '*/.cursor/*' -type d | head -40)",
+      "Bash(cd \"C:\\\\Users\\\\Dylan\\\\Downloads\\\\agency-website-main\" && npm run build 2>&1 | tail -40)",
+      "Bash(ls \"C:\\\\Users\\\\Dylan\\\\.claude\\\\projects\\\\C--Users-Dylan-Downloads-agency-website-main\\\\memory\\\\\" 2>/dev/null || echo \"no files yet\")",
+      "Bash(cd \"C:/Users/Dylan/Downloads/agency-website-main\" && npm run dev 2>&1)",
+      "Bash(cd \"C:\\\\Users\\\\Dylan\\\\Downloads\\\\agency-website-main\" && npm run dev)",
+      "Bash(vercel --version 2>/dev/null || echo \"not installed\")",
+      "WebSearch",
+      "Bash(cd \"C:\\\\Users\\\\Dylan\\\\Downloads\\\\agency-website-main\" && npm install lenis 2>&1 | tail -5)",
+      "Bash(cd \"C:\\\\Users\\\\Dylan\\\\Downloads\\\\agency-website-main\" && npx tsc --noEmit 2>&1 | head -40)",
+      "Bash(cd \"C:\\\\Users\\\\Dylan\\\\Downloads\\\\agency-website-main\" && npm install -g vercel 2>&1 | tail -3)",
+      "Bash(sleep 15 && vercel --version 2>/dev/null || echo \"not ready yet\")",
+      "Bash(cd \"C:\\\\Users\\\\Dylan\\\\Downloads\\\\agency-website-main\" && vercel --yes 2>&1)",
+      "Bash(claude doctor:*)",
+      "Bash(cd:*)",
+      "Bash(npm run:*)",
+      "Bash(git init:*)",
+      "Bash(which vercel:*)",
+      "Bash(gh repo:*)",
+      "Bash(git remote:*)",
+      "Bash(git add:* https://github.com/Meaditt/MEADIT-TEST)"
+    ]
+  }
+}
