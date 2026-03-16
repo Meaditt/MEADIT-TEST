@@ -171,6 +171,7 @@ function Hero() {
               <motion.circle
                 cx={`${agent.x}%`}
                 cy={`${agent.y}%`}
+                r={3}
                 fill={isActive ? '#c9a96e' : '#d4cfc4'}
                 animate={{
                   r: showName ? 6 : isActive ? 4 : 3,
