@@ -238,7 +238,8 @@ export async function appendLeadToSheet(data: SheetLeadData): Promise<AppendResu
     ];
 
     const range = `${SHEET_NAME}!A:Q`;
-    const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${encodeURIComponent(range)}:append?valueInputOption=USER_ENTERED&insertDataOption=INSERT_ROWS`;
+    // Use RAW input to prevent formula injection (=, +, -, @ prefixed values)
+    const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${encodeURIComponent(range)}:append?valueInputOption=RAW&insertDataOption=INSERT_ROWS`;
 
     const res = await fetch(url, {
       method: 'POST',

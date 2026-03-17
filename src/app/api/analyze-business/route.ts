@@ -4,6 +4,7 @@ import {
   generateFallbackAnalysis,
   type AnalysisResult,
 } from '@/lib/agents/website-agent';
+import { rateLimit, getClientIP } from '@/lib/rate-limit';
 
 // Thinking steps streamed to the client during analysis
 const thinkingSteps = [
@@ -20,6 +21,16 @@ const thinkingSteps = [
 ];
 
 export async function POST(request: NextRequest) {
+  // Rate limit: 5 analyses per minute per IP
+  const ip = getClientIP(request);
+  const { allowed } = rateLimit('analyze', ip, { maxRequests: 5, windowMs: 60000 });
+  if (!allowed) {
+    return new Response(
+      JSON.stringify({ error: 'Too many requests. Please wait a minute before analyzing again.' }),
+      { status: 429, headers: { 'Content-Type': 'application/json' } }
+    );
+  }
+
   const encoder = new TextEncoder();
 
   // Parse body before creating stream

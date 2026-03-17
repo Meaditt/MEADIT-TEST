@@ -58,6 +58,11 @@ export function trackBooking(data: {
 
   bookingRecords.push(record);
 
+  // Cap in-memory store to prevent unbounded growth
+  if (bookingRecords.length > 500) {
+    bookingRecords.splice(0, bookingRecords.length - 500);
+  }
+
   // Log for monitoring
   console.log('===== NEW BOOKING (CRM) =====');
   console.log('ID:', record.id);

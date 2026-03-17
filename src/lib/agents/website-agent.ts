@@ -177,6 +177,40 @@ function detectSiteFeatures(html: string, url: string): SiteDetection {
 }
 
 // ========================
+// URL SAFETY CHECK (SSRF Prevention)
+// ========================
+
+function isUrlSafe(urlString: string): boolean {
+  try {
+    const parsed = new URL(urlString);
+
+    // Block non-HTTP protocols
+    if (!['http:', 'https:'].includes(parsed.protocol)) return false;
+
+    const hostname = parsed.hostname.toLowerCase();
+
+    // Block localhost and loopback
+    if (hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '::1' || hostname === '0.0.0.0') return false;
+
+    // Block private IP ranges
+    const parts = hostname.split('.').map(Number);
+    if (parts.length === 4 && parts.every(n => !isNaN(n))) {
+      if (parts[0] === 10) return false; // 10.x.x.x
+      if (parts[0] === 172 && parts[1] >= 16 && parts[1] <= 31) return false; // 172.16-31.x.x
+      if (parts[0] === 192 && parts[1] === 168) return false; // 192.168.x.x
+      if (parts[0] === 169 && parts[1] === 254) return false; // 169.254.x.x (link-local / cloud metadata)
+    }
+
+    // Block cloud metadata endpoints
+    if (hostname === 'metadata.google.internal') return false;
+
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+// ========================
 // WEBSITE CONTENT FETCHER
 // ========================
 
@@ -188,6 +222,17 @@ export async function fetchWebsiteContent(url: string): Promise<{
   rawHtml: string;
 }> {
   const normalizedUrl = url.startsWith('http') ? url : `https://${url}`;
+
+  // SSRF protection: block internal/private URLs
+  if (!isUrlSafe(normalizedUrl)) {
+    return {
+      content: `Website URL: ${url} (blocked: private or internal URL)`,
+      title: '',
+      meta: {},
+      statusCode: 0,
+      rawHtml: '',
+    };
+  }
 
   try {
     const response = await fetch(normalizedUrl, {
@@ -702,6 +747,12 @@ function recordAnalysis(record: AnalysisRecord): void {
     history.splice(0, history.length - 50);
   }
   analysisHistory.set(key, history);
+
+  // Cap total distinct URLs tracked to prevent unbounded memory growth
+  if (analysisHistory.size > 1000) {
+    const firstKey = analysisHistory.keys().next().value;
+    if (firstKey) analysisHistory.delete(firstKey);
+  }
 }
 
 function updateMetrics(result: AnalysisResult): void {

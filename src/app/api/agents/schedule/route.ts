@@ -11,10 +11,34 @@ import {
 } from '@/lib/agents/agent-scheduler';
 
 // ========================
+// AUTH CHECK
+// ========================
+
+function isAuthorized(request: NextRequest): boolean {
+  const adminKey = process.env.ADMIN_API_KEY;
+  if (!adminKey) return false; // If no key is configured, block all access
+
+  const authHeader = request.headers.get('authorization');
+  if (!authHeader) return false;
+
+  const token = authHeader.replace('Bearer ', '');
+  return token === adminKey;
+}
+
+function unauthorizedResponse() {
+  return NextResponse.json(
+    { error: 'Unauthorized. Provide a valid Bearer token.' },
+    { status: 401 }
+  );
+}
+
+// ========================
 // GET - Scheduler status & dashboard data
 // ========================
 
 export async function GET(request: NextRequest) {
+  if (!isAuthorized(request)) return unauthorizedResponse();
+
   const { searchParams } = new URL(request.url);
   const view = searchParams.get('view');
 
@@ -39,6 +63,8 @@ export async function GET(request: NextRequest) {
 // ========================
 
 export async function POST(request: NextRequest) {
+  if (!isAuthorized(request)) return unauthorizedResponse();
+
   try {
     const body = await request.json();
     const { action } = body;

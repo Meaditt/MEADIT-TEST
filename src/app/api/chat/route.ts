@@ -1,14 +1,5 @@
 import { NextResponse } from 'next/server';
-
-// Site pages the bot can navigate to
-const SITE_PAGES = {
-  book: { path: '/book', label: 'Book a Call' },
-  start: { path: '/start', label: 'Get Started' },
-  stories: { path: '/stories', label: 'See Our Work' },
-  about: { path: '/about', label: 'About Us' },
-  blog: { path: '/blog', label: 'Read Our Blog' },
-  agents: { path: '/agents', label: 'AI Agents' },
-};
+import { rateLimit, getClientIP } from '@/lib/rate-limit';
 
 const COMPANY_KNOWLEDGE = `
 You are MeadITT's AI assistant embedded on the company website. You help visitors understand MeadITT's services and guide them to the right page.
@@ -87,6 +78,16 @@ interface ChatMessage {
 }
 
 export async function POST(request: Request) {
+  // Rate limit: 30 requests per minute per IP
+  const ip = getClientIP(request);
+  const { allowed } = rateLimit('chat', ip, { maxRequests: 30, windowMs: 60000 });
+  if (!allowed) {
+    return NextResponse.json(
+      { message: "You're sending messages too quickly. Please wait a moment.", actions: [] },
+      { status: 429 }
+    );
+  }
+
   try {
     const body = await request.json();
     const { messages, leadInfo } = body;
@@ -98,17 +99,23 @@ export async function POST(request: Request) {
       );
     }
 
+    // Limit conversation history length and message size
+    const safeMessages: ChatMessage[] = messages.slice(-20).map((m: { role: string; content: string }) => ({
+      role: (m.role === 'assistant' ? 'assistant' : 'user') as 'user' | 'assistant',
+      content: typeof m.content === 'string' ? m.content.slice(0, 2000) : '',
+    }));
+
     const apiKey = process.env.ANTHROPIC_API_KEY || process.env.OPENAI_API_KEY;
 
     if (!apiKey) {
-      const response = generateFallbackResponse(messages, leadInfo);
+      const response = generateFallbackResponse(safeMessages, leadInfo);
       return NextResponse.json(response);
     }
 
     if (process.env.ANTHROPIC_API_KEY) {
-      return await handleClaudeChat(messages, leadInfo);
+      return await handleClaudeChat(safeMessages, leadInfo);
     } else {
-      return await handleOpenAIChat(messages, leadInfo);
+      return await handleOpenAIChat(safeMessages, leadInfo);
     }
   } catch (error) {
     console.error('Chat error:', error);

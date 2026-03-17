@@ -8,6 +8,7 @@ import {
 } from '@/lib/google-calendar';
 import { appendLeadToSheet } from '@/lib/google-sheets';
 import { trackBooking } from '@/lib/crm';
+import { rateLimit, sanitizeInput, getClientIP } from '@/lib/rate-limit';
 
 /**
  * GET /api/booking?date=YYYY-MM-DD
@@ -45,10 +46,28 @@ export async function GET(request: Request) {
  * Creates a booking after checking for conflicts.
  */
 export async function POST(request: Request) {
+  // Rate limit: 5 bookings per minute per IP
+  const ip = getClientIP(request);
+  const { allowed } = rateLimit('booking', ip, { maxRequests: 5, windowMs: 60000 });
+  if (!allowed) {
+    return NextResponse.json(
+      { error: 'Too many booking attempts. Please wait a minute.' },
+      { status: 429 }
+    );
+  }
+
   try {
     const body = await request.json();
 
-    const { name, email, phone, company, purpose, date, time, sourcePage } = body;
+    // Sanitize all string inputs
+    const name = sanitizeInput(body.name || '', 100);
+    const email = (body.email || '').slice(0, 254).trim();
+    const phone = sanitizeInput(body.phone || '', 30);
+    const company = sanitizeInput(body.company || '', 200);
+    const purpose = sanitizeInput(body.purpose || '', 500);
+    const date = (body.date || '').slice(0, 10).trim();
+    const time = (body.time || '').slice(0, 5).trim();
+    const sourcePage = sanitizeInput(body.sourcePage || '/book', 100);
 
     // Validate required fields
     if (!name || !email || !purpose || !date || !time) {

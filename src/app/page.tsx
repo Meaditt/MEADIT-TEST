@@ -1015,24 +1015,34 @@ function HowWeDoIt() {
             const style = cardStyles[i % cardStyles.length];
             return (
               <FadeIn key={post.id} delay={i * 0.1}>
-                <div className={`${style.bg} overflow-hidden`}>
+                <div className={`${style.bg} overflow-hidden rounded-2xl`}>
                   {/* Text content at top */}
-                  <div className="p-6 md:p-8 text-center">
+                  <div className="p-6 md:p-8 text-center overflow-hidden">
                     <p className={`text-sm font-medium uppercase tracking-[0.15em] mb-4 ${style.dark ? 'text-[#c9a96e]' : 'text-[#c9a96e]'}`}>
                       {post.category}
                     </p>
                     <h3
-                      className="text-xl md:text-2xl mb-3 line-clamp-2"
+                      className="text-xl md:text-2xl mb-3 overflow-hidden"
                       style={{
                         fontFamily: 'var(--font-display)',
                         fontWeight: 300,
                         letterSpacing: '-0.02em',
                         color: style.dark ? '#fafaf8' : '#1a1a18',
+                        display: '-webkit-box',
+                        WebkitLineClamp: 2,
+                        WebkitBoxOrient: 'vertical' as const,
                       }}
                     >
                       {post.title}
                     </h3>
-                    <p className={`text-base mb-6 max-w-md mx-auto line-clamp-2 leading-relaxed ${style.dark ? 'text-gray-400' : 'text-[#7a7a72]'}`}>
+                    <p
+                      className={`text-base mb-6 max-w-md mx-auto leading-relaxed overflow-hidden ${style.dark ? 'text-gray-400' : 'text-[#7a7a72]'}`}
+                      style={{
+                        display: '-webkit-box',
+                        WebkitLineClamp: 2,
+                        WebkitBoxOrient: 'vertical' as const,
+                      }}
+                    >
                       {post.excerpt}
                     </p>
                     <div className="flex items-center justify-center gap-4">
