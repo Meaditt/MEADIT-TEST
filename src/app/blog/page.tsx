@@ -257,19 +257,33 @@ function BlogCard({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: Math.min(index * 0.05, 0.3) }}
     >
-      <div className={`${style.bg} rounded-3xl overflow-hidden h-[440px] flex flex-col group`}>
-        {/* Text content at top - fixed height */}
-        <div className="p-5 md:p-6 text-center h-[180px] flex flex-col justify-center">
+      <div className={`${style.bg} rounded-3xl overflow-hidden h-[460px] flex flex-col group`}>
+        {/* Text content at top */}
+        <div className="p-5 md:p-6 text-center flex flex-col justify-center overflow-hidden shrink-0" style={{ minHeight: 200 }}>
           <span className={`text-xs font-medium mb-2 block ${style.dark ? 'text-gray-400' : 'text-[#86868b]'}`}>
             {post.category}
           </span>
-          <h3 className={`text-lg md:text-xl font-semibold tracking-tight mb-2 line-clamp-2 ${style.dark ? 'text-white' : 'text-[#1d1d1f]'}`}>
+          <h3
+            className={`text-lg md:text-xl font-semibold tracking-tight mb-2 overflow-hidden ${style.dark ? 'text-white' : 'text-[#1d1d1f]'}`}
+            style={{
+              display: '-webkit-box',
+              WebkitLineClamp: 2,
+              WebkitBoxOrient: 'vertical' as const,
+            }}
+          >
             {post.title}
           </h3>
-          <p className={`text-sm mb-3 line-clamp-2 ${style.dark ? 'text-gray-300' : 'text-[#52525b]'}`}>
+          <p
+            className={`text-sm mb-3 overflow-hidden ${style.dark ? 'text-gray-300' : 'text-[#52525b]'}`}
+            style={{
+              display: '-webkit-box',
+              WebkitLineClamp: 2,
+              WebkitBoxOrient: 'vertical' as const,
+            }}
+          >
             {post.excerpt}
           </p>
-          <div className="flex items-center justify-center gap-3">
+          <div className="flex items-center justify-center gap-3 mt-auto">
             <Link
               href={`/blog/${post.slug}`}
               className={`hover:underline text-sm font-medium ${style.dark ? 'text-[#66b3ff]' : 'text-[#0071e3]'}`}
@@ -290,7 +304,7 @@ function BlogCard({
         </div>
 
         {/* Large image at bottom - fills remaining space */}
-        <div className="flex-1 relative overflow-hidden">
+        <div className="flex-1 relative overflow-hidden min-h-0">
           <img
             src={post.image}
             alt={post.title}
