@@ -8,35 +8,16 @@ import {
 // Thinking steps streamed to the client during analysis
 const thinkingSteps = [
   "Connecting to your website...",
-  "Reading page content and structure...",
+  "Scanning page structure and content...",
+  "Detecting existing tools and integrations...",
+  "Checking for chatbots, forms, and booking systems...",
   "Analyzing your business model...",
-  "Identifying manual processes...",
-  "Detecting automation opportunities...",
-  "Mapping potential AI agents...",
+  "Identifying manual processes and gaps...",
+  "Mapping AI agent opportunities...",
+  "Scoring automation readiness...",
   "Calculating efficiency gains...",
   "Preparing personalized recommendations...",
 ];
-
-// Legacy shape returned to the NeedsAssessment component
-interface LegacyResult {
-  summary: string;
-  painPoints: string[];
-  opportunities: string[];
-  recommendedAgents: string[];
-  estimatedImpact: string;
-}
-
-function toLegacyResult(result: AnalysisResult): LegacyResult {
-  return {
-    summary: result.summary,
-    painPoints: result.painPoints,
-    opportunities: result.opportunities,
-    recommendedAgents: result.recommendedAgents.map((a) =>
-      typeof a === 'string' ? a : a.name
-    ),
-    estimatedImpact: result.estimatedImpact,
-  };
-}
 
 export async function POST(request: NextRequest) {
   const encoder = new TextEncoder();
@@ -79,7 +60,7 @@ export async function POST(request: NextRequest) {
         // Stream thinking steps with delays
         for (let i = 0; i < thinkingSteps.length; i++) {
           send(JSON.stringify({ thinking: thinkingSteps[i] }));
-          await new Promise((resolve) => setTimeout(resolve, 600 + Math.random() * 400));
+          await new Promise((resolve) => setTimeout(resolve, 500 + Math.random() * 400));
         }
 
         send(JSON.stringify({ thinking: "Running AI analysis..." }));
@@ -89,6 +70,13 @@ export async function POST(request: NextRequest) {
         try {
           result = await analyzeWebsite(trimmedUrl);
         } catch (error) {
+          const msg = error instanceof Error ? error.message : '';
+          // If the site couldn't be reached, tell the user — don't fake results
+          if (msg === 'SITE_UNREACHABLE' || msg.startsWith('SITE_ERROR_')) {
+            send(JSON.stringify({ error: "We couldn't reach that website. Please check the URL and try again." }));
+            controller.close();
+            return;
+          }
           console.error('Website agent analysis failed:', error);
           result = generateFallbackAnalysis(trimmedUrl);
         }
@@ -96,8 +84,8 @@ export async function POST(request: NextRequest) {
         send(JSON.stringify({ thinking: "Finalizing your report..." }));
         await new Promise((resolve) => setTimeout(resolve, 400));
 
-        // Send result in legacy format for backward compatibility
-        send(JSON.stringify({ result: toLegacyResult(result) }));
+        // Send full rich result
+        send(JSON.stringify({ result }));
         send('[DONE]');
         controller.close();
       } catch (error) {

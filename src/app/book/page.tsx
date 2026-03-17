@@ -168,27 +168,6 @@ function BookingSection() {
                   ))}
                 </div>
 
-                {/* Testimonial */}
-                <div
-                  className="rounded-2xl p-5"
-                  style={{ background: '#fafaf8', border: '1px solid #e2e0d8' }}
-                >
-                  <p className="text-sm italic mb-3" style={{ color: '#4a4a44', lineHeight: 1.6 }}>
-                    &ldquo;I came in with a vague idea. They helped me see exactly how AI could save my team 20 hours a week. No pressure, just great advice.&rdquo;
-                  </p>
-                  <div className="flex items-center gap-2">
-                    <div
-                      className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-medium"
-                      style={{ background: '#1a1a18', color: '#fafaf8' }}
-                    >
-                      AK
-                    </div>
-                    <div>
-                      <p className="text-xs font-medium" style={{ color: '#1a1a18' }}>Alex Kim</p>
-                      <p className="text-xs" style={{ color: '#7a7a72' }}>COO, DataSync</p>
-                    </div>
-                  </div>
-                </div>
               </div>
             </FadeIn>
           </div>

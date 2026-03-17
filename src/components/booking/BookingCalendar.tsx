@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo, useCallback } from 'react';
+import { useState, useMemo, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useBookingStore } from '@/lib/store/bookingStore';
 
@@ -209,11 +209,27 @@ function TimePicker({
   selectedTime,
   onSelectTime,
   selectedDate,
+  bookedTimes,
+  loadingSlots,
 }: {
   selectedTime: string | null;
   onSelectTime: (time: string) => void;
   selectedDate: Date;
+  bookedTimes: string[];
+  loadingSlots: boolean;
 }) {
+  const availableTimes = AVAILABLE_TIMES.filter((t) => !bookedTimes.includes(t));
+
+  // Also filter out past times if the selected date is today
+  const now = new Date();
+  const isToday = toDateString(selectedDate) === toDateString(now);
+  const filteredTimes = isToday
+    ? availableTimes.filter((t) => {
+        const [h, m] = t.split(':').map(Number);
+        return h > now.getHours() || (h === now.getHours() && m > now.getMinutes());
+      })
+    : availableTimes;
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 8 }}
@@ -223,34 +239,63 @@ function TimePicker({
       <p className="text-sm font-medium mb-3" style={{ color: '#7a7a72' }}>
         Available times for {formatDate(selectedDate)}
       </p>
-      <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
-        {AVAILABLE_TIMES.map((time) => (
-          <button
-            key={time}
-            onClick={() => onSelectTime(time)}
-            className="px-3 py-2.5 text-sm rounded-xl transition-all duration-175 border"
-            style={{
-              background: selectedTime === time ? '#c9a96e' : 'transparent',
-              color: selectedTime === time ? '#fafaf8' : '#1a1a18',
-              borderColor: selectedTime === time ? '#c9a96e' : '#e2e0d8',
-            }}
-            onMouseEnter={(e) => {
-              if (selectedTime !== time) {
-                e.currentTarget.style.borderColor = '#c9a96e';
-                e.currentTarget.style.background = 'rgba(201, 169, 110, 0.06)';
-              }
-            }}
-            onMouseLeave={(e) => {
-              if (selectedTime !== time) {
-                e.currentTarget.style.borderColor = '#e2e0d8';
-                e.currentTarget.style.background = 'transparent';
-              }
-            }}
-          >
-            {formatTime(time)}
-          </button>
-        ))}
-      </div>
+      {loadingSlots ? (
+        <div className="flex items-center justify-center py-6 gap-2">
+          <svg className="w-4 h-4 animate-spin text-[#c9a96e]" fill="none" viewBox="0 0 24 24">
+            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+          </svg>
+          <span className="text-sm" style={{ color: '#7a7a72' }}>Checking availability...</span>
+        </div>
+      ) : filteredTimes.length === 0 ? (
+        <p className="text-sm text-center py-6" style={{ color: '#7a7a72' }}>
+          No available times for this date. Please select another day.
+        </p>
+      ) : (
+        <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
+          {AVAILABLE_TIMES.map((time) => {
+            const isBooked = bookedTimes.includes(time);
+            const isPast = isToday && (() => {
+              const [h, m] = time.split(':').map(Number);
+              return h < now.getHours() || (h === now.getHours() && m <= now.getMinutes());
+            })();
+            const isDisabled = isBooked || isPast;
+
+            return (
+              <button
+                key={time}
+                onClick={() => !isDisabled && onSelectTime(time)}
+                disabled={isDisabled}
+                className="px-3 py-2.5 text-sm rounded-xl transition-all duration-175 border relative"
+                style={{
+                  background: selectedTime === time ? '#c9a96e' : isDisabled ? '#f4f3ef' : 'transparent',
+                  color: selectedTime === time ? '#fafaf8' : isDisabled ? '#d4cfc4' : '#1a1a18',
+                  borderColor: selectedTime === time ? '#c9a96e' : isDisabled ? '#eee' : '#e2e0d8',
+                  cursor: isDisabled ? 'not-allowed' : 'pointer',
+                  textDecoration: isBooked ? 'line-through' : 'none',
+                }}
+                onMouseEnter={(e) => {
+                  if (!isDisabled && selectedTime !== time) {
+                    e.currentTarget.style.borderColor = '#c9a96e';
+                    e.currentTarget.style.background = 'rgba(201, 169, 110, 0.06)';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!isDisabled && selectedTime !== time) {
+                    e.currentTarget.style.borderColor = '#e2e0d8';
+                    e.currentTarget.style.background = 'transparent';
+                  }
+                }}
+              >
+                {formatTime(time)}
+                {isBooked && (
+                  <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-400 rounded-full border-2 border-white" />
+                )}
+              </button>
+            );
+          })}
+        </div>
+      )}
     </motion.div>
   );
 }
@@ -260,7 +305,7 @@ function TimePicker({
 // ============================================================================
 
 function BookingForm({ onBack }: { onBack: () => void }) {
-  const { formData, updateFormData, selectedDate, selectedTime, setStatus, setError, setConfirmationId } =
+  const { formData, updateFormData, selectedDate, selectedTime, setStatus, setError, setConfirmationId, setSelectedTime } =
     useBookingStore();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -287,8 +332,15 @@ function BookingForm({ onBack }: { onBack: () => void }) {
       const data = await res.json();
 
       if (!res.ok) {
-        setStatus('error');
-        setError(data.error || 'Something went wrong.');
+        if (res.status === 409) {
+          // Slot was just taken — go back to date/time selection
+          setStatus('idle');
+          setError(data.error || 'This time slot was just booked. Please choose another time.');
+          setSelectedTime(null);
+        } else {
+          setStatus('error');
+          setError(data.error || 'Something went wrong.');
+        }
         setIsSubmitting(false);
         return;
       }
@@ -594,6 +646,33 @@ export function BookingCalendar() {
     return new Date(now.getFullYear(), now.getMonth(), 1);
   });
 
+  const [bookedTimes, setBookedTimes] = useState<string[]>([]);
+  const [loadingSlots, setLoadingSlots] = useState(false);
+
+  // Fetch booked slots whenever the selected date changes
+  useEffect(() => {
+    if (!selectedDate) {
+      setBookedTimes([]);
+      return;
+    }
+
+    const dateStr = toDateString(selectedDate);
+    setLoadingSlots(true);
+    setBookedTimes([]);
+
+    fetch(`/api/booking?date=${dateStr}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setBookedTimes(data.bookedTimes || []);
+      })
+      .catch(() => {
+        setBookedTimes([]);
+      })
+      .finally(() => {
+        setLoadingSlots(false);
+      });
+  }, [selectedDate]);
+
   const step: BookingStep =
     status === 'success'
       ? 'success'
@@ -731,6 +810,8 @@ export function BookingCalendar() {
                       selectedTime={selectedTime}
                       onSelectTime={setSelectedTime}
                       selectedDate={selectedDate}
+                      bookedTimes={bookedTimes}
+                      loadingSlots={loadingSlots}
                     />
                   </motion.div>
                 )}

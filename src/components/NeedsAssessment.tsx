@@ -3,12 +3,70 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+interface AgentRecommendation {
+  name: string;
+  description: string;
+  priority: 'high' | 'medium' | 'low';
+  estimatedTimeSaved: string;
+}
+
+interface AIOpportunity {
+  area: string;
+  currentProcess: string;
+  proposedSolution: string;
+  impact: 'high' | 'medium' | 'low';
+}
+
+interface CategoryScore {
+  name: string;
+  score: number;
+  label: string;
+}
+
+interface SiteDetection {
+  detectedFeatures: string[];
+  missingFeatures: string[];
+}
+
 interface AnalysisResult {
   summary: string;
+  businessType: string;
   painPoints: string[];
   opportunities: string[];
-  recommendedAgents: string[];
+  recommendedAgents: AgentRecommendation[] | string[];
   estimatedImpact: string;
+  automationScore: number;
+  categoryScores?: CategoryScore[];
+  manualProcesses: string[];
+  aiOpportunities?: AIOpportunity[];
+  siteDetection?: SiteDetection;
+}
+
+const priorityColor = {
+  high: { bg: 'bg-red-50', text: 'text-red-700', dot: 'bg-red-500' },
+  medium: { bg: 'bg-amber-50', text: 'text-amber-700', dot: 'bg-amber-500' },
+  low: { bg: 'bg-blue-50', text: 'text-blue-700', dot: 'bg-blue-500' },
+};
+
+function ScoreBar({ score, label }: { score: number; label: string }) {
+  const color = score <= 40 ? '#ef4444' : score <= 65 ? '#f59e0b' : '#22c55e';
+  return (
+    <div>
+      <div className="flex justify-between items-center mb-1">
+        <span className="text-xs font-medium text-[#1d1d1f]">{label}</span>
+        <span className="text-xs font-semibold" style={{ color }}>{score}/100</span>
+      </div>
+      <div className="h-1.5 bg-[#f0f0f0] rounded-full overflow-hidden">
+        <motion.div
+          initial={{ width: 0 }}
+          animate={{ width: `${score}%` }}
+          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+          className="h-full rounded-full"
+          style={{ background: color }}
+        />
+      </div>
+    </div>
+  );
 }
 
 export function NeedsAssessment() {
@@ -18,6 +76,7 @@ export function NeedsAssessment() {
   const [thinkingText, setThinkingText] = useState('');
   const [result, setResult] = useState<AnalysisResult | null>(null);
   const [error, setError] = useState('');
+  const [activeTab, setActiveTab] = useState<'overview' | 'agents' | 'opportunities'>('overview');
 
   const handleAnalyze = async () => {
     if (!url) {
@@ -57,7 +116,10 @@ export function NeedsAssessment() {
 
               try {
                 const parsed = JSON.parse(data);
-                if (parsed.thinking) {
+                if (parsed.error) {
+                  setError(parsed.error);
+                  setStage('input');
+                } else if (parsed.thinking) {
                   setThinkingText(parsed.thinking);
                 } else if (parsed.result) {
                   setResult(parsed.result);
@@ -70,7 +132,7 @@ export function NeedsAssessment() {
           }
         }
       }
-    } catch (err) {
+    } catch {
       setError('Failed to analyze. Try again.');
       setStage('input');
     }
@@ -100,6 +162,25 @@ export function NeedsAssessment() {
     window.location.href = '/start';
   };
 
+  const handleReset = () => {
+    setStage('input');
+    setResult(null);
+    setUrl('');
+    setEmail('');
+    setError('');
+    setActiveTab('overview');
+  };
+
+  // Normalize agents - handle both legacy string[] and rich object[] formats
+  const getAgents = (): AgentRecommendation[] => {
+    if (!result) return [];
+    return result.recommendedAgents.map(a =>
+      typeof a === 'string'
+        ? { name: a, description: '', priority: 'medium' as const, estimatedTimeSaved: '' }
+        : a
+    );
+  };
+
   return (
     <div className="bg-white rounded-2xl border border-[#e5e5e5] shadow-lg overflow-hidden">
       <AnimatePresence mode="wait">
@@ -111,7 +192,7 @@ export function NeedsAssessment() {
             exit={{ opacity: 0 }}
             className="p-8"
           >
-            {/* Compelling Header */}
+            {/* Header */}
             <div className="text-center mb-8">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#f5f5f7] rounded-full mb-4">
                 <motion.div
@@ -205,7 +286,7 @@ export function NeedsAssessment() {
             {/* Status */}
             <div className="text-center mb-6">
               <p className="text-sm font-medium text-[#1d1d1f] mb-1">AI Agent Working</p>
-              <p className="text-xs text-[#86868b]">Analyzing your business</p>
+              <p className="text-xs text-[#86868b]">Scanning your website for AI opportunities</p>
             </div>
 
             {/* Thinking text */}
@@ -234,89 +315,232 @@ export function NeedsAssessment() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            {/* Impact Header */}
-            <div className="bg-[#1d1d1f] p-6 text-center">
-              <p className="text-xs text-white/60 uppercase tracking-wider mb-1">Potential Impact</p>
-              <motion.p
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="text-xl font-semibold text-white"
-              >
-                {result.estimatedImpact}
-              </motion.p>
-            </div>
-
-            {/* Summary */}
-            <div className="p-5 border-b border-[#f0f0f0]">
-              <p className="text-sm text-[#52525b] leading-relaxed">{result.summary}</p>
-            </div>
-
-            {/* Two Column Grid */}
-            <div className="grid grid-cols-2 divide-x divide-[#f0f0f0]">
-              {/* Pain Points */}
-              <div className="p-5">
-                <div className="flex items-center gap-2 mb-3">
-                  <div className="w-5 h-5 rounded-full bg-red-50 flex items-center justify-center">
-                    <div className="w-1.5 h-1.5 bg-red-500 rounded-full" />
-                  </div>
-                  <p className="text-xs font-semibold text-[#1d1d1f] uppercase tracking-wide">Issues</p>
-                </div>
-                <div className="space-y-2">
-                  {result.painPoints.slice(0, 3).map((point, i) => (
-                    <motion.p
-                      key={i}
-                      initial={{ opacity: 0, x: -5 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: i * 0.1 }}
-                      className="text-xs text-[#52525b] leading-relaxed"
-                    >
-                      {point}
-                    </motion.p>
-                  ))}
-                </div>
-              </div>
-
-              {/* Opportunities */}
-              <div className="p-5">
-                <div className="flex items-center gap-2 mb-3">
-                  <div className="w-5 h-5 rounded-full bg-green-50 flex items-center justify-center">
-                    <div className="w-1.5 h-1.5 bg-green-500 rounded-full" />
-                  </div>
-                  <p className="text-xs font-semibold text-[#1d1d1f] uppercase tracking-wide">Solutions</p>
-                </div>
-                <div className="space-y-2">
-                  {result.opportunities.slice(0, 3).map((opp, i) => (
-                    <motion.p
-                      key={i}
-                      initial={{ opacity: 0, x: -5 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.2 + i * 0.1 }}
-                      className="text-xs text-[#52525b] leading-relaxed"
-                    >
-                      {opp}
-                    </motion.p>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Agents */}
-            <div className="px-5 py-4 border-t border-[#f0f0f0] bg-[#fafafa]">
-              <p className="text-xs font-semibold text-[#1d1d1f] uppercase tracking-wide mb-3">Recommended Agents</p>
-              <div className="flex flex-wrap gap-1.5">
-                {result.recommendedAgents.map((agent, i) => (
-                  <motion.span
-                    key={agent}
+            {/* Impact Header with Score */}
+            <div className="bg-[#1d1d1f] p-6">
+              <div className="flex items-center justify-between mb-3">
+                <div>
+                  <p className="text-[10px] text-white/50 uppercase tracking-wider mb-1">Automation Potential</p>
+                  <motion.p
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.3 + i * 0.05 }}
-                    className="px-2.5 py-1 bg-white border border-[#e5e5e5] rounded-md text-[11px] font-medium text-[#1d1d1f]"
+                    className="text-lg font-semibold text-white"
                   >
-                    {agent}
-                  </motion.span>
-                ))}
+                    {result.estimatedImpact}
+                  </motion.p>
+                </div>
+                <div className="text-right">
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ type: 'spring', stiffness: 200, delay: 0.2 }}
+                    className="w-14 h-14 rounded-full border-2 border-white/20 flex items-center justify-center"
+                  >
+                    <span className="text-xl font-bold text-white">{result.automationScore}</span>
+                  </motion.div>
+                  <p className="text-[9px] text-white/40 mt-1 uppercase">Score</p>
+                </div>
               </div>
+              {result.businessType && (
+                <span className="inline-block px-2 py-0.5 bg-white/10 rounded text-[10px] text-white/60">
+                  {result.businessType}
+                </span>
+              )}
             </div>
+
+            {/* Tab Navigation */}
+            <div className="flex border-b border-[#f0f0f0]">
+              {(['overview', 'agents', 'opportunities'] as const).map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`flex-1 py-3 text-xs font-medium uppercase tracking-wide transition-colors ${
+                    activeTab === tab
+                      ? 'text-[#1d1d1f] border-b-2 border-[#1d1d1f]'
+                      : 'text-[#86868b] hover:text-[#52525b]'
+                  }`}
+                >
+                  {tab === 'overview' ? 'Overview' : tab === 'agents' ? 'AI Agents' : 'Before / After'}
+                </button>
+              ))}
+            </div>
+
+            {/* Tab Content */}
+            <AnimatePresence mode="wait">
+              {activeTab === 'overview' && (
+                <motion.div key="overview" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+                  {/* Summary */}
+                  <div className="p-5 border-b border-[#f0f0f0]">
+                    <p className="text-sm text-[#52525b] leading-relaxed">{result.summary}</p>
+                  </div>
+
+                  {/* Category Scores */}
+                  {result.categoryScores && result.categoryScores.length > 0 && (
+                    <div className="p-5 border-b border-[#f0f0f0]">
+                      <p className="text-xs font-semibold text-[#1d1d1f] uppercase tracking-wide mb-3">Readiness Scores</p>
+                      <div className="space-y-3">
+                        {result.categoryScores.map((cs, i) => (
+                          <motion.div
+                            key={cs.name}
+                            initial={{ opacity: 0, x: -10 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: i * 0.1 }}
+                          >
+                            <ScoreBar score={cs.score} label={cs.name} />
+                          </motion.div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Site Detection */}
+                  {result.siteDetection && (
+                    <div className="p-5 border-b border-[#f0f0f0]">
+                      <p className="text-xs font-semibold text-[#1d1d1f] uppercase tracking-wide mb-3">Site Scan Results</p>
+                      <div className="grid grid-cols-2 gap-2">
+                        {result.siteDetection.detectedFeatures.map((f, i) => (
+                          <div key={i} className="flex items-center gap-1.5 text-[11px] text-green-700">
+                            <div className="w-1.5 h-1.5 bg-green-500 rounded-full flex-shrink-0" />
+                            {f}
+                          </div>
+                        ))}
+                        {result.siteDetection.missingFeatures.map((f, i) => (
+                          <div key={i} className="flex items-center gap-1.5 text-[11px] text-red-600">
+                            <div className="w-1.5 h-1.5 bg-red-400 rounded-full flex-shrink-0" />
+                            {f}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Issues & Solutions */}
+                  <div className="grid grid-cols-2 divide-x divide-[#f0f0f0]">
+                    <div className="p-5">
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="w-5 h-5 rounded-full bg-red-50 flex items-center justify-center">
+                          <div className="w-1.5 h-1.5 bg-red-500 rounded-full" />
+                        </div>
+                        <p className="text-xs font-semibold text-[#1d1d1f] uppercase tracking-wide">Issues</p>
+                      </div>
+                      <div className="space-y-2">
+                        {result.painPoints.map((point, i) => (
+                          <motion.p
+                            key={i}
+                            initial={{ opacity: 0, x: -5 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: i * 0.08 }}
+                            className="text-xs text-[#52525b] leading-relaxed"
+                          >
+                            {point}
+                          </motion.p>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="p-5">
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="w-5 h-5 rounded-full bg-green-50 flex items-center justify-center">
+                          <div className="w-1.5 h-1.5 bg-green-500 rounded-full" />
+                        </div>
+                        <p className="text-xs font-semibold text-[#1d1d1f] uppercase tracking-wide">Solutions</p>
+                      </div>
+                      <div className="space-y-2">
+                        {result.opportunities.map((opp, i) => (
+                          <motion.p
+                            key={i}
+                            initial={{ opacity: 0, x: -5 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.15 + i * 0.08 }}
+                            className="text-xs text-[#52525b] leading-relaxed"
+                          >
+                            {opp}
+                          </motion.p>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+
+              {activeTab === 'agents' && (
+                <motion.div key="agents" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="p-5">
+                  <div className="space-y-3">
+                    {getAgents().map((agent, i) => {
+                      const colors = priorityColor[agent.priority] || priorityColor.medium;
+                      return (
+                        <motion.div
+                          key={agent.name}
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: i * 0.1 }}
+                          className="border border-[#e5e5e5] rounded-xl p-4"
+                        >
+                          <div className="flex items-start justify-between mb-2">
+                            <h4 className="text-sm font-semibold text-[#1d1d1f]">{agent.name}</h4>
+                            <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium ${colors.bg} ${colors.text}`}>
+                              <span className={`w-1 h-1 rounded-full ${colors.dot}`} />
+                              {agent.priority}
+                            </span>
+                          </div>
+                          {agent.description && (
+                            <p className="text-xs text-[#52525b] leading-relaxed mb-2">{agent.description}</p>
+                          )}
+                          {agent.estimatedTimeSaved && (
+                            <div className="flex items-center gap-1.5">
+                              <svg className="w-3.5 h-3.5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                              </svg>
+                              <span className="text-[11px] font-medium text-green-700">Saves {agent.estimatedTimeSaved}</span>
+                            </div>
+                          )}
+                        </motion.div>
+                      );
+                    })}
+                  </div>
+                </motion.div>
+              )}
+
+              {activeTab === 'opportunities' && (
+                <motion.div key="opportunities" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="p-5">
+                  {result.aiOpportunities && result.aiOpportunities.length > 0 ? (
+                    <div className="space-y-4">
+                      {result.aiOpportunities.map((opp, i) => (
+                        <motion.div
+                          key={opp.area}
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: i * 0.12 }}
+                          className="border border-[#e5e5e5] rounded-xl overflow-hidden"
+                        >
+                          <div className="px-4 py-2.5 bg-[#fafafa] flex items-center justify-between">
+                            <span className="text-xs font-semibold text-[#1d1d1f]">{opp.area}</span>
+                            <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full ${
+                              opp.impact === 'high' ? 'bg-red-50 text-red-700' :
+                              opp.impact === 'medium' ? 'bg-amber-50 text-amber-700' :
+                              'bg-blue-50 text-blue-700'
+                            }`}>
+                              {opp.impact} impact
+                            </span>
+                          </div>
+                          <div className="p-4 grid grid-cols-2 gap-3">
+                            <div>
+                              <p className="text-[10px] font-medium text-red-500 uppercase tracking-wide mb-1">Now</p>
+                              <p className="text-xs text-[#52525b] leading-relaxed">{opp.currentProcess}</p>
+                            </div>
+                            <div>
+                              <p className="text-[10px] font-medium text-green-600 uppercase tracking-wide mb-1">With AI</p>
+                              <p className="text-xs text-[#52525b] leading-relaxed">{opp.proposedSolution}</p>
+                            </div>
+                          </div>
+                        </motion.div>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="text-sm text-[#86868b] text-center py-8">No detailed opportunities available</p>
+                  )}
+                </motion.div>
+              )}
+            </AnimatePresence>
 
             {/* CTA */}
             <div className="p-5 border-t border-[#f0f0f0]">
@@ -335,6 +559,12 @@ export function NeedsAssessment() {
                   className="w-full py-3 bg-[#1d1d1f] text-white rounded-xl font-medium hover:bg-black transition-all"
                 >
                   Get implementation plan
+                </button>
+                <button
+                  onClick={handleReset}
+                  className="w-full py-2 text-xs text-[#86868b] hover:text-[#52525b] transition-colors"
+                >
+                  Analyze another website
                 </button>
               </div>
             </div>

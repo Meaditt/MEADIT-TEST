@@ -46,7 +46,7 @@ async function createServiceAccountToken(): Promise<string | null> {
     const header = { alg: 'RS256', typ: 'JWT' };
     const claimSet = {
       iss: clientEmail,
-      scope: 'https://www.googleapis.com/auth/calendar.events',
+      scope: 'https://www.googleapis.com/auth/calendar.events https://www.googleapis.com/auth/calendar.readonly',
       aud: 'https://oauth2.googleapis.com/token',
       exp: now + 3600,
       iat: now,
@@ -87,6 +87,103 @@ async function createServiceAccountToken(): Promise<string | null> {
   } catch (err) {
     console.error('[Google Calendar] Error creating service account token:', err);
     return null;
+  }
+}
+
+/**
+ * Fetch existing events in a time range to check for conflicts.
+ * Returns booked time slots as ISO string pairs.
+ */
+export async function getBookedSlots(
+  dateStr: string // YYYY-MM-DD
+): Promise<{ start: string; end: string }[]> {
+  const calendarId = process.env.GOOGLE_CALENDAR_ID;
+  if (!calendarId) return [];
+
+  const accessToken = await createServiceAccountToken();
+  if (!accessToken) return [];
+
+  try {
+    const timeMin = `${dateStr}T00:00:00-05:00`;
+    const timeMax = `${dateStr}T23:59:59-05:00`;
+
+    const url = `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(
+      calendarId
+    )}/events?timeMin=${encodeURIComponent(timeMin)}&timeMax=${encodeURIComponent(
+      timeMax
+    )}&singleEvents=true&orderBy=startTime`;
+
+    const response = await fetch(url, {
+      headers: { Authorization: `Bearer ${accessToken}` },
+    });
+
+    if (!response.ok) {
+      console.error('[Google Calendar] Failed to fetch events:', await response.text());
+      return [];
+    }
+
+    const data = await response.json();
+    return (data.items || [])
+      .filter((e: { status?: string }) => e.status !== 'cancelled')
+      .map((e: { start?: { dateTime?: string }; end?: { dateTime?: string } }) => ({
+        start: e.start?.dateTime || '',
+        end: e.end?.dateTime || '',
+      }))
+      .filter((slot: { start: string; end: string }) => slot.start && slot.end);
+  } catch (err) {
+    console.error('[Google Calendar] Error fetching events:', err);
+    return [];
+  }
+}
+
+/**
+ * Check if a specific time slot is available (no overlapping events).
+ */
+export async function isSlotAvailable(
+  startTime: string,
+  endTime: string
+): Promise<boolean> {
+  const date = startTime.split('T')[0];
+  const bookedSlots = await getBookedSlots(date);
+
+  const reqStart = new Date(startTime).getTime();
+  const reqEnd = new Date(endTime).getTime();
+
+  for (const slot of bookedSlots) {
+    const slotStart = new Date(slot.start).getTime();
+    const slotEnd = new Date(slot.end).getTime();
+
+    // Overlap: reqStart < slotEnd AND reqEnd > slotStart
+    if (reqStart < slotEnd && reqEnd > slotStart) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+// Simple in-memory lock to prevent race conditions on concurrent bookings
+const bookingLocks = new Map<string, Promise<void>>();
+
+export async function withBookingLock<T>(
+  slotKey: string,
+  fn: () => Promise<T>
+): Promise<T> {
+  // Wait for any existing lock on this slot
+  const existing = bookingLocks.get(slotKey);
+  if (existing) {
+    await existing;
+  }
+
+  let resolve: () => void;
+  const lockPromise = new Promise<void>((r) => { resolve = r; });
+  bookingLocks.set(slotKey, lockPromise);
+
+  try {
+    return await fn();
+  } finally {
+    resolve!();
+    bookingLocks.delete(slotKey);
   }
 }
 

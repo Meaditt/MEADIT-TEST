@@ -424,7 +424,7 @@ function CTA() {
               Book a call with me
             </Link>
             <p className="mt-6 text-sm text-[#86868b]">
-              Or just DM me on Twitter @gal. I actually respond
+              Or just send us a message. We actually respond
             </p>
           </FadeIn>
         </div>

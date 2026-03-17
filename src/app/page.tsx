@@ -172,10 +172,10 @@ function Hero() {
                 cx={`${agent.x}%`}
                 cy={`${agent.y}%`}
                 r={3}
-                fill={isActive ? '#c9a96e' : '#d4cfc4'}
+                fill={isActive ? '#22c55e' : '#d4cfc4'}
                 animate={{
                   r: showName ? 6 : isActive ? 4 : 3,
-                  fill: isActive ? '#c9a96e' : '#d4cfc4',
+                  fill: isActive ? '#22c55e' : '#d4cfc4',
                 }}
                 transition={{ duration: 0.2 }}
               />
@@ -184,7 +184,7 @@ function Hero() {
                   x={`${labelX}%`}
                   y={`${labelY}%`}
                   textAnchor={anchor}
-                  fill="#c9a96e"
+                  fill="#22c55e"
                   fontSize="10"
                   fontWeight="500"
                   initial={{ opacity: 0 }}
@@ -220,7 +220,7 @@ function Hero() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: EASE }}
-          className="text-xs font-medium uppercase tracking-[0.2em] mb-8"
+          className="text-sm font-medium uppercase tracking-[0.2em] mb-8"
           style={{ color: '#c9a96e' }}
         >
           AI Agency for Founders
@@ -281,7 +281,7 @@ function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.75, ease: EASE }}
-          className="text-lg md:text-xl mb-10 max-w-xl mx-auto leading-relaxed"
+          className="text-xl md:text-2xl mb-10 max-w-xl mx-auto leading-relaxed"
           style={{ color: '#7a7a72' }}
         >
           Turn your ideas into working automation. Ship in weeks, not months.
@@ -310,34 +310,6 @@ function Hero() {
           </Link>
         </motion.div>
 
-        {/* Trust logos row — social proof anchored to hero */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1.1, ease: EASE }}
-          className="flex flex-col items-center gap-4"
-        >
-          <p
-            className="text-xs uppercase tracking-[0.18em]"
-            style={{ color: '#b8b4a8' }}
-          >
-            Trusted by founders at
-          </p>
-          <div className="flex items-center gap-8 flex-wrap justify-center">
-            {['ReviewBot', 'Traceback', 'SoloOps', 'NestPath', 'DataPulse'].map((name, i) => (
-              <motion.span
-                key={name}
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 1.2 + i * 0.06, ease: EASE }}
-                className="text-sm font-medium tracking-wide"
-                style={{ color: '#c8c4bb', fontFamily: 'var(--font-sans)', letterSpacing: '0.04em' }}
-              >
-                {name}
-              </motion.span>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   );
@@ -354,7 +326,7 @@ function AgentsShowcase() {
       <div className="container px-4">
         <FadeIn>
           <div className="text-center mb-20">
-            <p className="text-xs font-medium uppercase tracking-[0.2em] mb-6" style={{ color: '#c9a96e' }}>
+            <p className="text-sm font-medium uppercase tracking-[0.2em] mb-6" style={{ color: '#c9a96e' }}>
               What we build
             </p>
             <h2
@@ -369,7 +341,7 @@ function AgentsShowcase() {
               AI agents that
               <br /><em style={{ color: '#7a7a72', fontStyle: 'italic' }}>actually work.</em>
             </h2>
-            <p className="text-lg max-w-xl mx-auto" style={{ color: '#7a7a72' }}>
+            <p className="text-xl max-w-xl mx-auto" style={{ color: '#7a7a72' }}>
               Not chatbots. Not toys. Real agents that do real work.
             </p>
           </div>
@@ -382,8 +354,8 @@ function AgentsShowcase() {
           <FadeIn delay={0.1}>
             <div className="rounded-3xl p-6 min-h-[320px] relative overflow-hidden group transition-all duration-500" style={{ background: '#f4f3ef' }} onMouseEnter={e => (e.currentTarget.style.background = '#1a1a18')} onMouseLeave={e => (e.currentTarget.style.background = '#f4f3ef')}>
               <div className="relative z-10">
-                <h3 className="text-lg font-semibold mb-1 transition-colors" style={{ color: '#1a1a18', fontFamily: 'var(--font-display)' }}>Sales Agent</h3>
-                <p className="text-sm transition-colors" style={{ color: '#7a7a72' }}>Qualifies leads, books meetings</p>
+                <h3 className="text-xl font-semibold mb-1 transition-colors text-[#1a1a18] group-hover:text-[#c9a96e]" style={{ fontFamily: 'var(--font-display)' }}>Sales Agent</h3>
+                <p className="text-base transition-colors text-[#7a7a72] group-hover:text-[#c9a96e]/70">Qualifies leads, books meetings</p>
               </div>
               {/* Funnel visualization */}
               <div className="absolute inset-0 flex items-center justify-center pt-8">
@@ -447,8 +419,8 @@ function AgentsShowcase() {
           <FadeIn delay={0.15}>
             <div className="rounded-3xl p-6 min-h-[320px] relative overflow-hidden group transition-all duration-500" style={{ background: '#f4f3ef' }} onMouseEnter={e => (e.currentTarget.style.background = '#1a1a18')} onMouseLeave={e => (e.currentTarget.style.background = '#f4f3ef')}>
               <div className="relative z-10">
-                <h3 className="text-lg font-semibold mb-1 transition-colors" style={{ color: '#1a1a18', fontFamily: 'var(--font-display)' }}>Support Agent</h3>
-                <p className="text-sm transition-colors" style={{ color: '#7a7a72' }}>24/7 customer assistance</p>
+                <h3 className="text-xl font-semibold mb-1 transition-colors text-[#1a1a18] group-hover:text-[#c9a96e]" style={{ fontFamily: 'var(--font-display)' }}>Support Agent</h3>
+                <p className="text-base transition-colors text-[#7a7a72] group-hover:text-[#c9a96e]/70">24/7 customer assistance</p>
               </div>
               {/* Chat bubbles visualization */}
               <div className="absolute inset-0 flex items-center justify-center pt-8">
@@ -489,8 +461,8 @@ function AgentsShowcase() {
           <FadeIn delay={0.2}>
             <div className="rounded-3xl p-6 min-h-[320px] relative overflow-hidden group transition-all duration-500" style={{ background: '#f4f3ef' }} onMouseEnter={e => (e.currentTarget.style.background = '#1a1a18')} onMouseLeave={e => (e.currentTarget.style.background = '#f4f3ef')}>
               <div className="relative z-10">
-                <h3 className="text-lg font-semibold mb-1 transition-colors" style={{ color: '#1a1a18', fontFamily: 'var(--font-display)' }}>Content Agent</h3>
-                <p className="text-sm transition-colors" style={{ color: '#7a7a72' }}>Creates & schedules content</p>
+                <h3 className="text-xl font-semibold mb-1 transition-colors text-[#1a1a18] group-hover:text-[#c9a96e]" style={{ fontFamily: 'var(--font-display)' }}>Content Agent</h3>
+                <p className="text-base transition-colors text-[#7a7a72] group-hover:text-[#c9a96e]/70">Creates & schedules content</p>
               </div>
               {/* Writing/document visualization */}
               <div className="absolute inset-0 flex items-center justify-center pt-8">
@@ -539,8 +511,8 @@ function AgentsShowcase() {
           <FadeIn delay={0.25}>
             <div className="rounded-3xl p-6 min-h-[320px] relative overflow-hidden group transition-all duration-500" style={{ background: '#f4f3ef' }} onMouseEnter={e => (e.currentTarget.style.background = '#1a1a18')} onMouseLeave={e => (e.currentTarget.style.background = '#f4f3ef')}>
               <div className="relative z-10">
-                <h3 className="text-lg font-semibold mb-1 transition-colors" style={{ color: '#1a1a18', fontFamily: 'var(--font-display)' }}>Data Agent</h3>
-                <p className="text-sm transition-colors" style={{ color: '#7a7a72' }}>Analyzes & reports insights</p>
+                <h3 className="text-xl font-semibold mb-1 transition-colors text-[#1a1a18] group-hover:text-[#c9a96e]" style={{ fontFamily: 'var(--font-display)' }}>Data Agent</h3>
+                <p className="text-base transition-colors text-[#7a7a72] group-hover:text-[#c9a96e]/70">Analyzes & reports insights</p>
               </div>
               {/* Bar chart visualization */}
               <div className="absolute inset-0 flex items-center justify-center pt-8">
@@ -582,8 +554,8 @@ function AgentsShowcase() {
           <FadeIn delay={0.3}>
             <div className="rounded-3xl p-6 min-h-[320px] relative overflow-hidden group transition-all duration-500" style={{ background: '#f4f3ef' }} onMouseEnter={e => (e.currentTarget.style.background = '#1a1a18')} onMouseLeave={e => (e.currentTarget.style.background = '#f4f3ef')}>
               <div className="relative z-10">
-                <h3 className="text-lg font-semibold mb-1 transition-colors" style={{ color: '#1a1a18', fontFamily: 'var(--font-display)' }}>Ops Agent</h3>
-                <p className="text-sm transition-colors" style={{ color: '#7a7a72' }}>Connects tools & workflows</p>
+                <h3 className="text-xl font-semibold mb-1 transition-colors text-[#1a1a18] group-hover:text-[#c9a96e]" style={{ fontFamily: 'var(--font-display)' }}>Ops Agent</h3>
+                <p className="text-base transition-colors text-[#7a7a72] group-hover:text-[#c9a96e]/70">Connects tools & workflows</p>
               </div>
               {/* Network nodes visualization */}
               <div className="absolute inset-0 flex items-center justify-center pt-8">
@@ -626,8 +598,8 @@ function AgentsShowcase() {
           <FadeIn delay={0.35}>
             <div className="rounded-3xl p-6 min-h-[320px] relative overflow-hidden group transition-all duration-500" style={{ background: '#f4f3ef' }} onMouseEnter={e => (e.currentTarget.style.background = '#1a1a18')} onMouseLeave={e => (e.currentTarget.style.background = '#f4f3ef')}>
               <div className="relative z-10">
-                <h3 className="text-lg font-semibold mb-1 transition-colors" style={{ color: '#1a1a18', fontFamily: 'var(--font-display)' }}>Outreach Agent</h3>
-                <p className="text-sm transition-colors" style={{ color: '#7a7a72' }}>Personalized email sequences</p>
+                <h3 className="text-xl font-semibold mb-1 transition-colors text-[#1a1a18] group-hover:text-[#c9a96e]" style={{ fontFamily: 'var(--font-display)' }}>Outreach Agent</h3>
+                <p className="text-base transition-colors text-[#7a7a72] group-hover:text-[#c9a96e]/70">Personalized email sequences</p>
               </div>
               {/* Email spreading visualization */}
               <div className="absolute inset-0 flex items-center justify-center pt-8">
@@ -671,7 +643,7 @@ function AgentsShowcase() {
 
         <FadeIn delay={0.5}>
           <div className="mt-20 text-center">
-            <p className="text-sm mb-6" style={{ color: '#7a7a72' }}>
+            <p className="text-base mb-6" style={{ color: '#7a7a72' }}>
               Need something custom?
             </p>
             <Link
@@ -716,7 +688,7 @@ function WhyUs() {
           {/* Left: sticky headline block */}
           <FadeIn>
             <div className="md:sticky md:top-28">
-              <p className="text-xs font-medium uppercase tracking-[0.2em] mb-6" style={{ color: '#c9a96e' }}>
+              <p className="text-sm font-medium uppercase tracking-[0.2em] mb-6" style={{ color: '#c9a96e' }}>
                 Why work with us
               </p>
               <h2
@@ -749,7 +721,7 @@ function WhyUs() {
                   >
                     {reason.title}
                   </h3>
-                  <p className="text-sm leading-relaxed" style={{ color: '#7a7a72' }}>
+                  <p className="text-base leading-relaxed" style={{ color: '#7a7a72' }}>
                     {reason.description}
                   </p>
                 </div>
@@ -800,7 +772,7 @@ function FeaturedStories() {
         <FadeIn>
           <div className="flex items-end justify-between mb-16">
             <div>
-              <p className="text-xs font-medium uppercase tracking-[0.2em] mb-4" style={{ color: '#c9a96e' }}>Case Studies</p>
+              <p className="text-sm font-medium uppercase tracking-[0.2em] mb-5" style={{ color: '#c9a96e' }}>Case Studies</p>
               <h2
                 className="text-4xl md:text-5xl"
                 style={{ fontFamily: 'var(--font-display)', fontWeight: 300, letterSpacing: '-0.025em', color: '#1a1a18' }}
@@ -850,7 +822,7 @@ function FeaturedStories() {
                       >
                         {story.title}
                       </h3>
-                      <p className="text-sm leading-relaxed" style={{ color: '#7a7a72', maxWidth: 420 }}>
+                      <p className="text-base leading-relaxed" style={{ color: '#7a7a72', maxWidth: 420 }}>
                         {story.description}
                       </p>
                     </div>
@@ -907,18 +879,18 @@ function Testimonials() {
   const testimonials = [
     {
       quote: "I built my MVP with Cursor in a weekend. They built the AI agent that turned it into a real business.",
-      author: "Jake Morrison",
-      role: "Founder, ContentFlow AI",
+      author: "Y.M.",
+      role: "Founder, SaaS Startup",
     },
     {
       quote: "I was copy pasting between ChatGPT and spreadsheets for hours. Now it just runs. I focus on growth.",
-      author: "Priya Sharma",
-      role: "Solo Founder, DataSync",
+      author: "R.K.",
+      role: "Solo Founder, Data Platform",
     },
     {
       quote: "They get it. I said I need an AI that does X and two weeks later, it existed. No BS, just shipped.",
-      author: "Tom Andersen",
-      role: "Founder, ReviewBot Pro",
+      author: "D.L.",
+      role: "Founder, Review Platform",
     },
   ];
 
@@ -1025,7 +997,7 @@ function HowWeDoIt() {
       <div className="container px-4">
         <FadeIn>
           <div className="text-center mb-12">
-            <p className="text-xs font-medium uppercase tracking-[0.2em] mb-4" style={{ color: '#c9a96e' }}>
+            <p className="text-sm font-medium uppercase tracking-[0.2em] mb-5" style={{ color: '#c9a96e' }}>
               The Build Log
             </p>
             <h2
@@ -1046,7 +1018,7 @@ function HowWeDoIt() {
                 <div className={`${style.bg} overflow-hidden`}>
                   {/* Text content at top */}
                   <div className="p-6 md:p-8 text-center">
-                    <p className={`text-xs font-medium uppercase tracking-[0.15em] mb-4 ${style.dark ? 'text-[#c9a96e]' : 'text-[#c9a96e]'}`}>
+                    <p className={`text-sm font-medium uppercase tracking-[0.15em] mb-4 ${style.dark ? 'text-[#c9a96e]' : 'text-[#c9a96e]'}`}>
                       {post.category}
                     </p>
                     <h3
@@ -1060,7 +1032,7 @@ function HowWeDoIt() {
                     >
                       {post.title}
                     </h3>
-                    <p className={`text-sm mb-6 max-w-md mx-auto line-clamp-2 leading-relaxed ${style.dark ? 'text-gray-400' : 'text-[#7a7a72]'}`}>
+                    <p className={`text-base mb-6 max-w-md mx-auto line-clamp-2 leading-relaxed ${style.dark ? 'text-gray-400' : 'text-[#7a7a72]'}`}>
                       {post.excerpt}
                     </p>
                     <div className="flex items-center justify-center gap-4">
@@ -1161,7 +1133,7 @@ function CTASection() {
           {/* Header with typing effect */}
           <FadeIn>
             <div className="text-center mb-14">
-              <p className="text-xs font-medium uppercase tracking-[0.2em] mb-6" style={{ color: '#c9a96e' }}>Start here</p>
+              <p className="text-sm font-medium uppercase tracking-[0.2em] mb-6" style={{ color: '#c9a96e' }}>Start here</p>
               <h2
                 className="text-4xl md:text-5xl lg:text-6xl mb-6"
                 style={{ fontFamily: 'var(--font-display)', fontWeight: 300, letterSpacing: '-0.03em', color: '#1a1a18' }}
@@ -1210,7 +1182,7 @@ function FinalCTA() {
             >
               Let's build something.
             </h2>
-            <p className="text-lg mb-12" style={{ color: '#7a7a72' }}>
+            <p className="text-xl mb-12" style={{ color: '#7a7a72' }}>
               15 minute call. No pitch deck needed.
             </p>
             <Link

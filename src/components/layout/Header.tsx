@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { siteConfig } from '@/lib/data/siteConfig';
 
@@ -45,9 +46,10 @@ function MobileMenu({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
               <Link
                 href="/"
                 onClick={onClose}
-                className="text-xl font-medium tracking-tight"
+                className="flex items-center gap-2 text-xl font-medium tracking-tight"
                 style={{ fontFamily: 'var(--font-display)', color: '#1a1a18' }}
               >
+                <Image src="/meadit-logo.png" alt="MeadITT logo" width={32} height={32} className="rounded-md" />
                 {siteConfig.name}
               </Link>
               <button
@@ -183,9 +185,10 @@ export function Header() {
             {/* Logo */}
             <Link
               href="/"
-              className="text-xl font-medium tracking-tight transition-opacity hover:opacity-70"
+              className="flex items-center gap-2 text-xl font-medium tracking-tight transition-opacity hover:opacity-70"
               style={{ fontFamily: 'var(--font-display)', color: '#1a1a18' }}
             >
+              <Image src="/meadit-logo.png" alt="MeadITT logo" width={32} height={32} className="rounded-md" />
               {siteConfig.name}
             </Link>
 

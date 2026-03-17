@@ -41,7 +41,7 @@ export const blogPosts: BlogPost[] = [
       'If you are building AI agents or automation workflows, Claude Code 2.1.0 is a must-upgrade. The combination of faster development, safer testing, and better visibility makes it the most developer-friendly release yet.'
     ],
     category: 'AI News',
-    author: { name: 'Dr. Lisa Park', role: 'Head of AI Development', image: '/images/team/lisa.jpg' },
+    author: { name: 'Dr. N. Levy', role: 'Head of AI Development', image: '/images/team/author-1.jpg' },
     publishedAt: '2026-02-02',
     readTime: '5 min read',
     image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=630&fit=crop',
@@ -65,7 +65,7 @@ export const blogPosts: BlogPost[] = [
       'Early adoption data shows organizations using MCP Tool Search are building agents with 5-10x more tool integrations than before. The era of truly capable AI agents is here.'
     ],
     category: 'AI News',
-    author: { name: 'David Chen', role: 'Co-founder', image: '/images/team/david.jpg' },
+    author: { name: 'R. Tal', role: 'Co-founder', image: '/images/team/author-2.jpg' },
     publishedAt: '2026-02-01',
     readTime: '4 min read',
     image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&h=630&fit=crop',
@@ -88,7 +88,7 @@ export const blogPosts: BlogPost[] = [
       'For knowledge workers drowning in file management, Cowork is the breakthrough we have been waiting for. AI that actually does the work, not just talks about it.'
     ],
     category: 'AI News',
-    author: { name: 'Sarah Miller', role: 'Co-founder', image: '/images/team/sarah.jpg' },
+    author: { name: 'A. Dayan', role: 'Co-founder', image: '/images/team/author-3.jpg' },
     publishedAt: '2026-02-01',
     readTime: '5 min read',
     image: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop',
@@ -112,7 +112,7 @@ export const blogPosts: BlogPost[] = [
       'By Gartner estimates, 40% of enterprise applications will integrate task-specific AI agents by end of 2026, up from less than 5% in 2025. The multi-agent future is not coming. It is here.'
     ],
     category: 'AI News',
-    author: { name: 'Michael Torres', role: 'Co-founder', image: '/images/team/michael.jpg' },
+    author: { name: 'Y. Oren', role: 'Co-founder', image: '/images/team/author-4.jpg' },
     publishedAt: '2026-01-31',
     readTime: '6 min read',
     image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&h=630&fit=crop',
@@ -135,7 +135,7 @@ export const blogPosts: BlogPost[] = [
       'Early adopters are already building custom MCP servers with rich interfaces. The pattern feels like the early days of web apps. Give it a year, and AI interactions will look nothing like today text-heavy chat.'
     ],
     category: 'AI News',
-    author: { name: 'Dr. Lisa Park', role: 'Head of AI Development', image: '/images/team/lisa.jpg' },
+    author: { name: 'Dr. N. Levy', role: 'Head of AI Development', image: '/images/team/author-1.jpg' },
     publishedAt: '2026-01-30',
     readTime: '5 min read',
     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
@@ -158,7 +158,7 @@ export const blogPosts: BlogPost[] = [
       'We are building custom plugins for our clients now. The ability to package domain expertise into reusable components changes how we deliver AI solutions. One great plugin can serve hundreds of similar businesses.'
     ],
     category: 'AI News',
-    author: { name: 'Jennifer Wong', role: 'Co-founder', image: '/images/team/jennifer.jpg' },
+    author: { name: 'L. Mor', role: 'Co-founder', image: '/images/team/author-5.jpg' },
     publishedAt: '2026-01-30',
     readTime: '5 min read',
     image: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=1200&h=630&fit=crop',
@@ -182,7 +182,7 @@ export const blogPosts: BlogPost[] = [
       'We are implementing agent security assessments for all client deployments now. The convenience of autonomous AI comes with real risks. Getting security right from the start is essential.'
     ],
     category: 'AI News',
-    author: { name: 'Marcus Johnson', role: 'Lead Developer', image: '/images/team/marcus.jpg' },
+    author: { name: 'E. Rosen', role: 'Lead Developer', image: '/images/team/author-6.jpg' },
     publishedAt: '2026-01-29',
     readTime: '6 min read',
     image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1200&h=630&fit=crop',
@@ -205,7 +205,7 @@ export const blogPosts: BlogPost[] = [
       'The pattern is clear: Claude is becoming the universal interface for digital work. As integrations expand, the number of applications you actually need to open will shrink dramatically.'
     ],
     category: 'AI News',
-    author: { name: 'David Chen', role: 'Co-founder', image: '/images/team/david.jpg' },
+    author: { name: 'R. Tal', role: 'Co-founder', image: '/images/team/author-2.jpg' },
     publishedAt: '2026-01-28',
     readTime: '5 min read',
     image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=630&fit=crop',
@@ -228,7 +228,7 @@ export const blogPosts: BlogPost[] = [
       'The phone becomes a command center rather than a coding device. Monitor your agents, review their work, approve significant changes, adjust priorities. The paradigm shift is real.'
     ],
     category: 'AI News',
-    author: { name: 'Michael Torres', role: 'Co-founder', image: '/images/team/michael.jpg' },
+    author: { name: 'Y. Oren', role: 'Co-founder', image: '/images/team/author-4.jpg' },
     publishedAt: '2026-01-27',
     readTime: '5 min read',
     image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1200&h=630&fit=crop',
@@ -251,7 +251,7 @@ export const blogPosts: BlogPost[] = [
       'The companies that thrive will be those that treat AI agents as business tools, not technology experiments. Pragmatism beats hype every time.'
     ],
     category: 'AI News',
-    author: { name: 'Sarah Miller', role: 'Co-founder', image: '/images/team/sarah.jpg' },
+    author: { name: 'A. Dayan', role: 'Co-founder', image: '/images/team/author-3.jpg' },
     publishedAt: '2026-01-26',
     readTime: '5 min read',
     image: 'https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=1200&h=630&fit=crop',
@@ -277,9 +277,9 @@ export const blogPosts: BlogPost[] = [
     ],
     category: 'Insights',
     author: {
-      name: 'David Chen',
+      name: 'R. Tal',
       role: 'Co-founder, Former Restaurant Owner',
-      image: '/images/team/david.jpg'
+      image: '/images/team/author-2.jpg'
     },
     publishedAt: '2026-01-28',
     readTime: '5 min read',
@@ -315,9 +315,9 @@ export const blogPosts: BlogPost[] = [
     ],
     category: 'Insights',
     author: {
-      name: 'Sarah Miller',
+      name: 'A. Dayan',
       role: 'Co-founder, Former Retail Manager',
-      image: '/images/team/sarah.jpg'
+      image: '/images/team/author-3.jpg'
     },
     publishedAt: '2026-01-25',
     readTime: '6 min read',
@@ -353,9 +353,9 @@ export const blogPosts: BlogPost[] = [
     ],
     category: 'Insights',
     author: {
-      name: 'Michael Torres',
+      name: 'Y. Oren',
       role: 'Co-founder, E-commerce Entrepreneur',
-      image: '/images/team/michael.jpg'
+      image: '/images/team/author-4.jpg'
     },
     publishedAt: '2026-01-22',
     readTime: '5 min read',
@@ -392,9 +392,9 @@ export const blogPosts: BlogPost[] = [
     ],
     category: 'Technology',
     author: {
-      name: 'Dr. Lisa Park',
+      name: 'Dr. N. Levy',
       role: 'Head of AI Development',
-      image: '/images/team/lisa.jpg'
+      image: '/images/team/author-1.jpg'
     },
     publishedAt: '2026-01-18',
     readTime: '7 min read',
@@ -430,9 +430,9 @@ export const blogPosts: BlogPost[] = [
     ],
     category: 'Insights',
     author: {
-      name: 'Jennifer Wong',
+      name: 'L. Mor',
       role: 'Co-founder, Former Healthcare Administrator',
-      image: '/images/team/jennifer.jpg'
+      image: '/images/team/author-5.jpg'
     },
     publishedAt: '2026-01-15',
     readTime: '6 min read',
@@ -468,9 +468,9 @@ export const blogPosts: BlogPost[] = [
     ],
     category: 'Insights',
     author: {
-      name: 'David Chen',
+      name: 'R. Tal',
       role: 'Co-founder',
-      image: '/images/team/david.jpg'
+      image: '/images/team/author-2.jpg'
     },
     publishedAt: '2026-01-12',
     readTime: '5 min read',
@@ -506,9 +506,9 @@ export const blogPosts: BlogPost[] = [
     ],
     category: 'Insights',
     author: {
-      name: 'Sarah Miller',
+      name: 'A. Dayan',
       role: 'Co-founder',
-      image: '/images/team/sarah.jpg'
+      image: '/images/team/author-3.jpg'
     },
     publishedAt: '2026-01-08',
     readTime: '4 min read',
@@ -544,9 +544,9 @@ export const blogPosts: BlogPost[] = [
     ],
     category: 'Insights',
     author: {
-      name: 'Rachel Adams',
+      name: 'D. Vardi',
       role: 'Marketing Agency Owner',
-      image: '/images/team/rachel.jpg'
+      image: '/images/team/author-7.jpg'
     },
     publishedAt: '2026-01-05',
     readTime: '5 min read',
@@ -583,9 +583,9 @@ export const blogPosts: BlogPost[] = [
     ],
     category: 'Business',
     author: {
-      name: 'Michael Torres',
+      name: 'Y. Oren',
       role: 'Co-founder',
-      image: '/images/team/michael.jpg'
+      image: '/images/team/author-4.jpg'
     },
     publishedAt: '2026-01-02',
     readTime: '4 min read',
@@ -622,9 +622,9 @@ export const blogPosts: BlogPost[] = [
     ],
     category: 'Business',
     author: {
-      name: 'Dr. Lisa Park',
+      name: 'Dr. N. Levy',
       role: 'Head of AI Development',
-      image: '/images/team/lisa.jpg'
+      image: '/images/team/author-1.jpg'
     },
     publishedAt: '2025-12-28',
     readTime: '5 min read',
@@ -661,7 +661,7 @@ export const blogPosts: BlogPost[] = [
       'The pricing is steep but the ROI math works for most businesses. At current rates, a GPT-5 automation that saves one hour of employee time per day pays for itself within the first week.'
     ],
     category: 'AI News',
-    author: { name: 'Dr. Lisa Park', role: 'Head of AI Development', image: '/images/team/lisa.jpg' },
+    author: { name: 'Dr. N. Levy', role: 'Head of AI Development', image: '/images/team/author-1.jpg' },
     publishedAt: '2026-02-01',
     readTime: '5 min read',
     image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&h=630&fit=crop',
@@ -684,7 +684,7 @@ export const blogPosts: BlogPost[] = [
       'For businesses already on Google Cloud, the choice becomes easy. Gemini Ultra 2.0 integrates with existing security policies, billing, and access controls. IT departments are breathing easier.'
     ],
     category: 'AI News',
-    author: { name: 'David Chen', role: 'Co-founder', image: '/images/team/david.jpg' },
+    author: { name: 'R. Tal', role: 'Co-founder', image: '/images/team/author-2.jpg' },
     publishedAt: '2026-01-31',
     readTime: '5 min read',
     image: 'https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?w=1200&h=630&fit=crop',
@@ -707,7 +707,7 @@ export const blogPosts: BlogPost[] = [
       'For businesses drowning in call volume, voice AI is no longer experimental. It is operational. The question is not whether to adopt it, but how quickly you can implement.'
     ],
     category: 'AI News',
-    author: { name: 'Jennifer Wong', role: 'Co-founder', image: '/images/team/jennifer.jpg' },
+    author: { name: 'L. Mor', role: 'Co-founder', image: '/images/team/author-5.jpg' },
     publishedAt: '2026-01-30',
     readTime: '5 min read',
     image: 'https://images.unsplash.com/photo-1556745757-8d76bdb6984b?w=1200&h=630&fit=crop',
@@ -730,7 +730,7 @@ export const blogPosts: BlogPost[] = [
       'For engineering managers, the implication is clear. AI coding assistants are now a competitive necessity. Teams without them are at a measurable disadvantage.'
     ],
     category: 'AI News',
-    author: { name: 'Marcus Johnson', role: 'Lead Developer', image: '/images/team/marcus.jpg' },
+    author: { name: 'E. Rosen', role: 'Lead Developer', image: '/images/team/author-6.jpg' },
     publishedAt: '2026-01-29',
     readTime: '5 min read',
     image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&h=630&fit=crop',
@@ -753,7 +753,7 @@ export const blogPosts: BlogPost[] = [
       'The good news: compliance is achievable. Most requirements align with AI best practices you should be following anyway. Documentation, testing, transparency, and human oversight make AI systems better regardless of regulation.'
     ],
     category: 'AI News',
-    author: { name: 'Sarah Miller', role: 'Co-founder', image: '/images/team/sarah.jpg' },
+    author: { name: 'A. Dayan', role: 'Co-founder', image: '/images/team/author-3.jpg' },
     publishedAt: '2026-01-28',
     readTime: '6 min read',
     image: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1200&h=630&fit=crop',
@@ -780,7 +780,7 @@ export const blogPosts: BlogPost[] = [
       'The key insight: timing matters more than copy. A mediocre email at the perfect moment beats brilliant copy at the wrong time.'
     ],
     category: 'Automation',
-    author: { name: 'Michael Torres', role: 'Co-founder', image: '/images/team/michael.jpg' },
+    author: { name: 'Y. Oren', role: 'Co-founder', image: '/images/team/author-4.jpg' },
     publishedAt: '2026-01-27',
     readTime: '7 min read',
     image: 'https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=1200&h=630&fit=crop',
@@ -805,7 +805,7 @@ export const blogPosts: BlogPost[] = [
       'The platforms are converging. Zapier is adding complexity features. Make is improving ease of use. n8n is growing its app library. Check back in a year and this comparison might be different.'
     ],
     category: 'Automation',
-    author: { name: 'Marcus Johnson', role: 'Lead Developer', image: '/images/team/marcus.jpg' },
+    author: { name: 'E. Rosen', role: 'Lead Developer', image: '/images/team/author-6.jpg' },
     publishedAt: '2026-01-26',
     readTime: '8 min read',
     image: 'https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=1200&h=630&fit=crop',
@@ -829,7 +829,7 @@ export const blogPosts: BlogPost[] = [
       'The implementation takes 2-4 weeks for most businesses. The productivity gain lasts forever. Do the work once, reap the benefits indefinitely.'
     ],
     category: 'Automation',
-    author: { name: 'Jennifer Wong', role: 'Co-founder', image: '/images/team/jennifer.jpg' },
+    author: { name: 'L. Mor', role: 'Co-founder', image: '/images/team/author-5.jpg' },
     publishedAt: '2026-01-25',
     readTime: '7 min read',
     image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=630&fit=crop',
@@ -853,7 +853,7 @@ export const blogPosts: BlogPost[] = [
       'The goal is not maximum automation. The goal is optimal automation that frees you for the human work that matters.'
     ],
     category: 'Automation',
-    author: { name: 'Sarah Miller', role: 'Co-founder', image: '/images/team/sarah.jpg' },
+    author: { name: 'A. Dayan', role: 'Co-founder', image: '/images/team/author-3.jpg' },
     publishedAt: '2026-01-24',
     readTime: '6 min read',
     image: 'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=1200&h=630&fit=crop',
@@ -877,7 +877,7 @@ export const blogPosts: BlogPost[] = [
       'The ROI calculation: 4.5 hours saved weekly equals 234 hours annually. At $75/hour, that is $17,550 in reclaimed time. Plus the cash flow improvement. The automation paid for itself in the first month.'
     ],
     category: 'Automation',
-    author: { name: 'David Chen', role: 'Co-founder', image: '/images/team/david.jpg' },
+    author: { name: 'R. Tal', role: 'Co-founder', image: '/images/team/author-2.jpg' },
     publishedAt: '2026-01-23',
     readTime: '6 min read',
     image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&h=630&fit=crop',
@@ -901,7 +901,7 @@ export const blogPosts: BlogPost[] = [
       'The results: Setup completion increased from 60% to 89%. 90-day retention improved by 35%. Support tickets from new users dropped by 50%. The automation handles what used to require a dedicated onboarding team.'
     ],
     category: 'Automation',
-    author: { name: 'Dr. Lisa Park', role: 'Head of AI Development', image: '/images/team/lisa.jpg' },
+    author: { name: 'Dr. N. Levy', role: 'Head of AI Development', image: '/images/team/author-1.jpg' },
     publishedAt: '2026-01-22',
     readTime: '6 min read',
     image: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1200&h=630&fit=crop',
@@ -925,7 +925,7 @@ export const blogPosts: BlogPost[] = [
       'The results: No-show rate dropped from 15% to 2%. Front desk scheduling time went from 8 hours to 30 minutes weekly. Annual revenue recovered: $45,000. The automation paid for a decade in the first year.'
     ],
     category: 'Automation',
-    author: { name: 'Michael Torres', role: 'Co-founder', image: '/images/team/michael.jpg' },
+    author: { name: 'Y. Oren', role: 'Co-founder', image: '/images/team/author-4.jpg' },
     publishedAt: '2026-01-21',
     readTime: '6 min read',
     image: 'https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=1200&h=630&fit=crop',
@@ -949,7 +949,7 @@ export const blogPosts: BlogPost[] = [
       'The results: Overselling incidents dropped to zero. Stockouts decreased by 80%. The part-time inventory employee transitioned to customer service. Revenue increased 12% from capturing previously lost sales.'
     ],
     category: 'Automation',
-    author: { name: 'Jennifer Wong', role: 'Co-founder', image: '/images/team/jennifer.jpg' },
+    author: { name: 'L. Mor', role: 'Co-founder', image: '/images/team/author-5.jpg' },
     publishedAt: '2026-01-20',
     readTime: '6 min read',
     image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1200&h=630&fit=crop',
@@ -973,7 +973,7 @@ export const blogPosts: BlogPost[] = [
       'The results: Report creation time dropped from 22 hours to 2 hours weekly. Clients got real-time access instead of weekly snapshots. The agency took on 30% more clients without adding staff.'
     ],
     category: 'Automation',
-    author: { name: 'David Chen', role: 'Co-founder', image: '/images/team/david.jpg' },
+    author: { name: 'R. Tal', role: 'Co-founder', image: '/images/team/author-2.jpg' },
     publishedAt: '2026-01-19',
     readTime: '6 min read',
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=630&fit=crop',
@@ -997,7 +997,7 @@ export const blogPosts: BlogPost[] = [
       'The ROI: 13 hours weekly saved equals $39,000 annually at imputed HR costs. Plus better candidate experience, faster onboarding, and reduced compliance risk. For a 25-person company, this is transformational.'
     ],
     category: 'Automation',
-    author: { name: 'Sarah Miller', role: 'Co-founder', image: '/images/team/sarah.jpg' },
+    author: { name: 'A. Dayan', role: 'Co-founder', image: '/images/team/author-3.jpg' },
     publishedAt: '2026-01-18',
     readTime: '7 min read',
     image: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1200&h=630&fit=crop',
@@ -1025,7 +1025,7 @@ export const blogPosts: BlogPost[] = [
       'The businesses winning with AI are not the ones with the best technology. They are the ones with the clearest problems and the discipline to solve them systematically.'
     ],
     category: 'Business',
-    author: { name: 'Michael Torres', role: 'Co-founder', image: '/images/team/michael.jpg' },
+    author: { name: 'Y. Oren', role: 'Co-founder', image: '/images/team/author-4.jpg' },
     publishedAt: '2026-01-17',
     readTime: '6 min read',
     image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&h=630&fit=crop',
@@ -1051,7 +1051,7 @@ export const blogPosts: BlogPost[] = [
       'The political reality: Even good ROI cases face resistance. Build internal champions. Start with quick wins that prove the model. Success breeds success.'
     ],
     category: 'Business',
-    author: { name: 'Dr. Lisa Park', role: 'Head of AI Development', image: '/images/team/lisa.jpg' },
+    author: { name: 'Dr. N. Levy', role: 'Head of AI Development', image: '/images/team/author-1.jpg' },
     publishedAt: '2026-01-16',
     readTime: '7 min read',
     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
@@ -1076,7 +1076,7 @@ export const blogPosts: BlogPost[] = [
       'The warning: automation is no longer optional for competitive businesses. The gap between automated and manual operations widens every year.'
     ],
     category: 'Business',
-    author: { name: 'David Chen', role: 'Co-founder', image: '/images/team/david.jpg' },
+    author: { name: 'R. Tal', role: 'Co-founder', image: '/images/team/author-2.jpg' },
     publishedAt: '2026-01-15',
     readTime: '6 min read',
     image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=630&fit=crop',
@@ -1101,7 +1101,7 @@ export const blogPosts: BlogPost[] = [
       'The goal is not maximum automation. The goal is optimal automation. Sometimes the optimal amount is zero.'
     ],
     category: 'Insights',
-    author: { name: 'Sarah Miller', role: 'Co-founder', image: '/images/team/sarah.jpg' },
+    author: { name: 'A. Dayan', role: 'Co-founder', image: '/images/team/author-3.jpg' },
     publishedAt: '2026-01-14',
     readTime: '5 min read',
     image: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1200&h=630&fit=crop',
@@ -1126,7 +1126,7 @@ export const blogPosts: BlogPost[] = [
       'Measure adoption, not just deployment. The project is not done when the system launches. The project is done when everyone uses it correctly. Keep pushing until adoption is real.'
     ],
     category: 'Insights',
-    author: { name: 'Jennifer Wong', role: 'Co-founder', image: '/images/team/jennifer.jpg' },
+    author: { name: 'L. Mor', role: 'Co-founder', image: '/images/team/author-5.jpg' },
     publishedAt: '2026-01-13',
     readTime: '6 min read',
     image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&h=630&fit=crop',
@@ -1154,7 +1154,7 @@ export const blogPosts: BlogPost[] = [
       'Today I work 45 hours weekly. The business is healthier than ever. I am healthier than ever. Automation did not replace me. It saved me.'
     ],
     category: 'Insights',
-    author: { name: 'David Chen', role: 'Co-founder', image: '/images/team/david.jpg' },
+    author: { name: 'R. Tal', role: 'Co-founder', image: '/images/team/author-2.jpg' },
     publishedAt: '2026-01-12',
     readTime: '5 min read',
     image: 'https://images.unsplash.com/photo-1508672019048-805c876b67e2?w=1200&h=630&fit=crop',
@@ -1180,7 +1180,7 @@ export const blogPosts: BlogPost[] = [
       'Automation is not about productivity metrics for me. It is about bedtime stories and Saturday mornings. The numbers that matter are not on spreadsheets.'
     ],
     category: 'Insights',
-    author: { name: 'Rachel Adams', role: 'Client, Bookkeeping Business Owner', image: '/images/team/rachel.jpg' },
+    author: { name: 'D. Vardi', role: 'Client, Bookkeeping Business Owner', image: '/images/team/author-7.jpg' },
     publishedAt: '2026-01-11',
     readTime: '5 min read',
     image: 'https://images.unsplash.com/photo-1476703993599-0035a21b17a9?w=1200&h=630&fit=crop',
@@ -1205,7 +1205,7 @@ export const blogPosts: BlogPost[] = [
       'I retired at 52. Not because I was lucky. Because I spent a decade building systems instead of just building revenue. The extra value was not in the sales. It was in the automation.'
     ],
     category: 'Insights',
-    author: { name: 'Michael Torres', role: 'Co-founder', image: '/images/team/michael.jpg' },
+    author: { name: 'Y. Oren', role: 'Co-founder', image: '/images/team/author-4.jpg' },
     publishedAt: '2026-01-10',
     readTime: '5 min read',
     image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1200&h=630&fit=crop',
@@ -1230,7 +1230,7 @@ export const blogPosts: BlogPost[] = [
       'My therapist calls this productive worry. I call it turning a weakness into a competitive advantage. Whatever you call it, it works.'
     ],
     category: 'Insights',
-    author: { name: 'Anonymous', role: 'Agency Owner', image: '/images/team/sarah.jpg' },
+    author: { name: 'Anonymous', role: 'Agency Owner', image: '/images/team/author-3.jpg' },
     publishedAt: '2026-01-09',
     readTime: '5 min read',
     image: 'https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=1200&h=630&fit=crop',
@@ -1255,7 +1255,7 @@ export const blogPosts: BlogPost[] = [
       'The greatest gift I can give my daughter is not the business. It is the freedom to run it without sacrificing her life.'
     ],
     category: 'Insights',
-    author: { name: 'Jennifer Wong', role: 'Co-founder', image: '/images/team/jennifer.jpg' },
+    author: { name: 'L. Mor', role: 'Co-founder', image: '/images/team/author-5.jpg' },
     publishedAt: '2026-01-08',
     readTime: '5 min read',
     image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1200&h=630&fit=crop',
@@ -1283,7 +1283,7 @@ export const blogPosts: BlogPost[] = [
       'You do not need to code APIs yourself. But understanding what they are helps you ask better questions, evaluate tools, and communicate with technical people. That alone is worth the learning.'
     ],
     category: 'Technology',
-    author: { name: 'Marcus Johnson', role: 'Lead Developer', image: '/images/team/marcus.jpg' },
+    author: { name: 'E. Rosen', role: 'Lead Developer', image: '/images/team/author-6.jpg' },
     publishedAt: '2026-01-07',
     readTime: '5 min read',
     image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&h=630&fit=crop',
@@ -1308,7 +1308,7 @@ export const blogPosts: BlogPost[] = [
       'The decision framework: Start with business requirements. Match to simplest solution that meets them. Upgrade only when hitting genuine limits. Premature optimization wastes money.'
     ],
     category: 'Technology',
-    author: { name: 'Dr. Lisa Park', role: 'Head of AI Development', image: '/images/team/lisa.jpg' },
+    author: { name: 'Dr. N. Levy', role: 'Head of AI Development', image: '/images/team/author-1.jpg' },
     publishedAt: '2026-01-06',
     readTime: '6 min read',
     image: 'https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=1200&h=630&fit=crop',
@@ -1333,7 +1333,7 @@ export const blogPosts: BlogPost[] = [
       'The small business reality: You cannot match enterprise security budgets. Focus on basics done well. Encryption, access control, credential management. These block most attacks.'
     ],
     category: 'Technology',
-    author: { name: 'Marcus Johnson', role: 'Lead Developer', image: '/images/team/marcus.jpg' },
+    author: { name: 'E. Rosen', role: 'Lead Developer', image: '/images/team/author-6.jpg' },
     publishedAt: '2026-01-05',
     readTime: '6 min read',
     image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1200&h=630&fit=crop',
@@ -1358,7 +1358,7 @@ export const blogPosts: BlogPost[] = [
       'Document fixes for future reference. The same problems tend to recur. A troubleshooting playbook saves time on repeat incidents.'
     ],
     category: 'Technology',
-    author: { name: 'David Chen', role: 'Co-founder', image: '/images/team/david.jpg' },
+    author: { name: 'R. Tal', role: 'Co-founder', image: '/images/team/author-2.jpg' },
     publishedAt: '2026-01-04',
     readTime: '6 min read',
     image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&h=630&fit=crop',
@@ -1383,7 +1383,7 @@ export const blogPosts: BlogPost[] = [
       'The meta-skill: learning what AI is good at (first drafts, brainstorming, summarizing) versus what it struggles with (facts, nuance, truly creative thinking). Play to strengths.'
     ],
     category: 'Technology',
-    author: { name: 'Dr. Lisa Park', role: 'Head of AI Development', image: '/images/team/lisa.jpg' },
+    author: { name: 'Dr. N. Levy', role: 'Head of AI Development', image: '/images/team/author-1.jpg' },
     publishedAt: '2026-01-03',
     readTime: '5 min read',
     image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=630&fit=crop',
@@ -1408,7 +1408,7 @@ export const blogPosts: BlogPost[] = [
       'The practical takeaway: When evaluating business tools, ask about the underlying database, data export capabilities, and backup policies. These matter more than flashy features.'
     ],
     category: 'Technology',
-    author: { name: 'Marcus Johnson', role: 'Lead Developer', image: '/images/team/marcus.jpg' },
+    author: { name: 'E. Rosen', role: 'Lead Developer', image: '/images/team/author-6.jpg' },
     publishedAt: '2026-01-02',
     readTime: '5 min read',
     image: 'https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=1200&h=630&fit=crop',
@@ -1433,7 +1433,7 @@ export const blogPosts: BlogPost[] = [
       'The exception: If you have specific compliance requirements, unusual security needs, or existing technical staff, evaluate on-premise seriously. Otherwise, go cloud without overthinking.'
     ],
     category: 'Technology',
-    author: { name: 'Jennifer Wong', role: 'Co-founder', image: '/images/team/jennifer.jpg' },
+    author: { name: 'L. Mor', role: 'Co-founder', image: '/images/team/author-5.jpg' },
     publishedAt: '2026-01-01',
     readTime: '5 min read',
     image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&h=630&fit=crop',
@@ -1458,7 +1458,7 @@ export const blogPosts: BlogPost[] = [
       'The technology choice matters less than the design. A well-designed chatbot on simple technology outperforms a poorly designed one on sophisticated AI.'
     ],
     category: 'Technology',
-    author: { name: 'Sarah Miller', role: 'Co-founder', image: '/images/team/sarah.jpg' },
+    author: { name: 'A. Dayan', role: 'Co-founder', image: '/images/team/author-3.jpg' },
     publishedAt: '2025-12-31',
     readTime: '6 min read',
     image: 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=1200&h=630&fit=crop',
@@ -1483,7 +1483,7 @@ export const blogPosts: BlogPost[] = [
       'Plan for vendor changes. APIs evolve. Platforms update. Build integrations that can adapt. Loose coupling between systems makes changes manageable.'
     ],
     category: 'Technology',
-    author: { name: 'Dr. Lisa Park', role: 'Head of AI Development', image: '/images/team/lisa.jpg' },
+    author: { name: 'Dr. N. Levy', role: 'Head of AI Development', image: '/images/team/author-1.jpg' },
     publishedAt: '2025-12-30',
     readTime: '6 min read',
     image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&h=630&fit=crop',
@@ -1508,7 +1508,7 @@ export const blogPosts: BlogPost[] = [
       'The test: Can you handle an urgent business issue from your phone while waiting for a flight? If not, your mobile automation needs work.'
     ],
     category: 'Technology',
-    author: { name: 'Michael Torres', role: 'Co-founder', image: '/images/team/michael.jpg' },
+    author: { name: 'Y. Oren', role: 'Co-founder', image: '/images/team/author-4.jpg' },
     publishedAt: '2025-12-29',
     readTime: '5 min read',
     image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1200&h=630&fit=crop',
@@ -1535,7 +1535,7 @@ export const blogPosts: BlogPost[] = [
       'Most manual processes can be automated for $2,000-10,000. The payback period is often measured in weeks, not years. The spreadsheet is not free. It is just hiding its price tag.'
     ],
     category: 'Business',
-    author: { name: 'Sarah Miller', role: 'Co-founder', image: '/images/team/sarah.jpg' },
+    author: { name: 'A. Dayan', role: 'Co-founder', image: '/images/team/author-3.jpg' },
     publishedAt: '2026-01-26',
     readTime: '5 min read',
     image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1200&h=630&fit=crop',
@@ -1561,7 +1561,7 @@ export const blogPosts: BlogPost[] = [
       'Your first automation is a learning experience disguised as a project. Optimize for learning and the returns will follow.'
     ],
     category: 'Business',
-    author: { name: 'Michael Torres', role: 'Co-founder', image: '/images/team/michael.jpg' },
+    author: { name: 'Y. Oren', role: 'Co-founder', image: '/images/team/author-4.jpg' },
     publishedAt: '2026-01-24',
     readTime: '6 min read',
     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
@@ -1586,7 +1586,7 @@ export const blogPosts: BlogPost[] = [
       'The companies that scale fastest in the next decade will not be those that hire fastest. They will be those that automate smartest.'
     ],
     category: 'Business',
-    author: { name: 'Jennifer Wong', role: 'Co-founder', image: '/images/team/jennifer.jpg' },
+    author: { name: 'L. Mor', role: 'Co-founder', image: '/images/team/author-5.jpg' },
     publishedAt: '2026-01-22',
     readTime: '6 min read',
     image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1200&h=630&fit=crop',
@@ -1611,7 +1611,7 @@ export const blogPosts: BlogPost[] = [
       'The framework applies to any automation. Plug in your numbers. Make decisions based on data, not hope.'
     ],
     category: 'Business',
-    author: { name: 'Dr. Lisa Park', role: 'Head of AI Development', image: '/images/team/lisa.jpg' },
+    author: { name: 'Dr. N. Levy', role: 'Head of AI Development', image: '/images/team/author-1.jpg' },
     publishedAt: '2026-01-20',
     readTime: '7 min read',
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=630&fit=crop',
@@ -1637,7 +1637,7 @@ export const blogPosts: BlogPost[] = [
       'The cultural shift is the real project. The technology is just a tool. Organizations that embrace continuous improvement will automate successfully. Those that resist change will struggle regardless of tools.'
     ],
     category: 'Business',
-    author: { name: 'Sarah Miller', role: 'Co-founder', image: '/images/team/sarah.jpg' },
+    author: { name: 'A. Dayan', role: 'Co-founder', image: '/images/team/author-3.jpg' },
     publishedAt: '2026-01-18',
     readTime: '6 min read',
     image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=630&fit=crop',
@@ -1662,7 +1662,7 @@ export const blogPosts: BlogPost[] = [
       'Failed automation projects share a common trait: rushing. Successful projects share another: patience. Take the time to do automation right.'
     ],
     category: 'Business',
-    author: { name: 'Michael Torres', role: 'Co-founder', image: '/images/team/michael.jpg' },
+    author: { name: 'Y. Oren', role: 'Co-founder', image: '/images/team/author-4.jpg' },
     publishedAt: '2026-01-16',
     readTime: '6 min read',
     image: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=1200&h=630&fit=crop',
@@ -1687,7 +1687,7 @@ export const blogPosts: BlogPost[] = [
       'Size used to be safety. Now size is slowness. The future belongs to small companies that move fast and leverage AI. That could be you.'
     ],
     category: 'Business',
-    author: { name: 'Jennifer Wong', role: 'Co-founder', image: '/images/team/jennifer.jpg' },
+    author: { name: 'L. Mor', role: 'Co-founder', image: '/images/team/author-5.jpg' },
     publishedAt: '2026-01-14',
     readTime: '6 min read',
     image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1200&h=630&fit=crop',
@@ -1712,7 +1712,7 @@ export const blogPosts: BlogPost[] = [
       'The companies winning at customer experience use more automation, not less. But they use it thoughtfully, enhancing human capabilities rather than replacing human connection.'
     ],
     category: 'Business',
-    author: { name: 'Marcus Johnson', role: 'Lead Developer', image: '/images/team/marcus.jpg' },
+    author: { name: 'E. Rosen', role: 'Lead Developer', image: '/images/team/author-6.jpg' },
     publishedAt: '2026-01-12',
     readTime: '6 min read',
     image: 'https://images.unsplash.com/photo-1556745757-8d76bdb6984b?w=1200&h=630&fit=crop',
@@ -1737,7 +1737,7 @@ export const blogPosts: BlogPost[] = [
       'Being not ready is not failure. It is awareness. Address gaps systematically. When readiness aligns, automation investments pay off. Rushing creates expensive lessons.'
     ],
     category: 'Business',
-    author: { name: 'Dr. Lisa Park', role: 'Head of AI Development', image: '/images/team/lisa.jpg' },
+    author: { name: 'Dr. N. Levy', role: 'Head of AI Development', image: '/images/team/author-1.jpg' },
     publishedAt: '2026-01-10',
     readTime: '5 min read',
     image: 'https://images.unsplash.com/photo-1434626881859-194d67b2b86f?w=1200&h=630&fit=crop',
@@ -1762,7 +1762,7 @@ export const blogPosts: BlogPost[] = [
       'What gets measured gets managed. Comprehensive measurement turns automation from a technology project into a strategic capability that continuously improves and delivers value.'
     ],
     category: 'Business',
-    author: { name: 'Sarah Miller', role: 'Co-founder', image: '/images/team/sarah.jpg' },
+    author: { name: 'A. Dayan', role: 'Co-founder', image: '/images/team/author-3.jpg' },
     publishedAt: '2026-01-08',
     readTime: '5 min read',
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=630&fit=crop',
@@ -1791,7 +1791,7 @@ export const blogPosts: BlogPost[] = [
       'Maria says: "I thought automation would make the restaurant feel less personal. Instead, it let me be more present. I\'m a better owner because I\'m not drowning in paperwork."'
     ],
     category: 'Insights',
-    author: { name: 'Michael Torres', role: 'Co-founder', image: '/images/team/michael.jpg' },
+    author: { name: 'Y. Oren', role: 'Co-founder', image: '/images/team/author-4.jpg' },
     publishedAt: '2026-01-25',
     readTime: '6 min read',
     image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&h=630&fit=crop',
@@ -1818,7 +1818,7 @@ export const blogPosts: BlogPost[] = [
       'Tom\'s story demonstrates something important: sometimes constraints create creativity. His lack of time forced systematic thinking that traditional business owners often skip.'
     ],
     category: 'Insights',
-    author: { name: 'Sarah Miller', role: 'Co-founder', image: '/images/team/sarah.jpg' },
+    author: { name: 'A. Dayan', role: 'Co-founder', image: '/images/team/author-3.jpg' },
     publishedAt: '2026-01-23',
     readTime: '6 min read',
     image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=1200&h=630&fit=crop',
@@ -1844,7 +1844,7 @@ export const blogPosts: BlogPost[] = [
       'Lisa says: "I was afraid automation would make my business feel corporate. Instead, it let me be more personal because I had time to be creative again."'
     ],
     category: 'Insights',
-    author: { name: 'Jennifer Wong', role: 'Co-founder', image: '/images/team/jennifer.jpg' },
+    author: { name: 'L. Mor', role: 'Co-founder', image: '/images/team/author-5.jpg' },
     publishedAt: '2026-01-21',
     readTime: '6 min read',
     image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=1200&h=630&fit=crop',
@@ -1870,7 +1870,7 @@ export const blogPosts: BlogPost[] = [
       'The lesson: as a service business, how you deliver matters as much as what you deliver. Automation improved both.'
     ],
     category: 'Insights',
-    author: { name: 'Marcus Johnson', role: 'Lead Developer', image: '/images/team/marcus.jpg' },
+    author: { name: 'E. Rosen', role: 'Lead Developer', image: '/images/team/author-6.jpg' },
     publishedAt: '2026-01-19',
     readTime: '7 min read',
     image: 'https://images.unsplash.com/photo-1552581234-26160f608093?w=1200&h=630&fit=crop',
@@ -1896,7 +1896,7 @@ export const blogPosts: BlogPost[] = [
       'The lesson: e-commerce success often is not about getting more visitors but converting and retaining the ones you have. Automation makes that possible for solo operators.'
     ],
     category: 'Insights',
-    author: { name: 'Dr. Lisa Park', role: 'Head of AI Development', image: '/images/team/lisa.jpg' },
+    author: { name: 'Dr. N. Levy', role: 'Head of AI Development', image: '/images/team/author-1.jpg' },
     publishedAt: '2026-01-17',
     readTime: '6 min read',
     image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&h=630&fit=crop',
@@ -1923,7 +1923,7 @@ export const blogPosts: BlogPost[] = [
       'The irony is not lost on us. We advise clients on operational excellence but needed the journey ourselves. Now we have credibility and case study.'
     ],
     category: 'Insights',
-    author: { name: 'Sarah Miller', role: 'Co-founder', image: '/images/team/sarah.jpg' },
+    author: { name: 'A. Dayan', role: 'Co-founder', image: '/images/team/author-3.jpg' },
     publishedAt: '2026-01-15',
     readTime: '6 min read',
     image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&h=630&fit=crop',
@@ -1949,7 +1949,7 @@ export const blogPosts: BlogPost[] = [
       'The practice now serves as a model for other small healthcare providers in the area.'
     ],
     category: 'Insights',
-    author: { name: 'Michael Torres', role: 'Co-founder', image: '/images/team/michael.jpg' },
+    author: { name: 'Y. Oren', role: 'Co-founder', image: '/images/team/author-4.jpg' },
     publishedAt: '2026-01-13',
     readTime: '6 min read',
     image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1200&h=630&fit=crop',
@@ -1975,7 +1975,7 @@ export const blogPosts: BlogPost[] = [
       'The family shop now wins bids against competitors ten times their size.'
     ],
     category: 'Insights',
-    author: { name: 'Jennifer Wong', role: 'Co-founder', image: '/images/team/jennifer.jpg' },
+    author: { name: 'L. Mor', role: 'Co-founder', image: '/images/team/author-5.jpg' },
     publishedAt: '2026-01-11',
     readTime: '6 min read',
     image: 'https://images.unsplash.com/photo-1565043666747-69f6646db940?w=1200&h=630&fit=crop',
@@ -2001,7 +2001,7 @@ export const blogPosts: BlogPost[] = [
       'Sandra says: "I was good at real estate but bad at managing a business. Automation let me be good at both."'
     ],
     category: 'Insights',
-    author: { name: 'Marcus Johnson', role: 'Lead Developer', image: '/images/team/marcus.jpg' },
+    author: { name: 'E. Rosen', role: 'Lead Developer', image: '/images/team/author-6.jpg' },
     publishedAt: '2026-01-09',
     readTime: '6 min read',
     image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&h=630&fit=crop',
@@ -2027,7 +2027,7 @@ export const blogPosts: BlogPost[] = [
       'Hope House now helps other nonprofits implement similar systems.'
     ],
     category: 'Insights',
-    author: { name: 'Dr. Lisa Park', role: 'Head of AI Development', image: '/images/team/lisa.jpg' },
+    author: { name: 'Dr. N. Levy', role: 'Head of AI Development', image: '/images/team/author-1.jpg' },
     publishedAt: '2026-01-07',
     readTime: '6 min read',
     image: 'https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=1200&h=630&fit=crop',

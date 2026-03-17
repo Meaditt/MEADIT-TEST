@@ -41,7 +41,7 @@ export const aiNewsPosts: NewsPost[] = [
     ],
     category: 'Product Updates',
     author: {
-      name: 'Dr. Lisa Park',
+      name: 'Dr. N. Levy',
       role: 'Head of AI Development'
     },
     publishedAt: '2026-02-02',
@@ -71,7 +71,7 @@ export const aiNewsPosts: NewsPost[] = [
     ],
     category: 'Technology',
     author: {
-      name: 'David Chen',
+      name: 'R. Tal',
       role: 'Co-founder'
     },
     publishedAt: '2026-02-01',
@@ -100,7 +100,7 @@ export const aiNewsPosts: NewsPost[] = [
     ],
     category: 'Product Updates',
     author: {
-      name: 'Sarah Miller',
+      name: 'A. Dayan',
       role: 'Co-founder'
     },
     publishedAt: '2026-02-01',
@@ -130,7 +130,7 @@ export const aiNewsPosts: NewsPost[] = [
     ],
     category: 'Industry Trends',
     author: {
-      name: 'Michael Torres',
+      name: 'Y. Oren',
       role: 'Co-founder'
     },
     publishedAt: '2026-01-31',
@@ -159,7 +159,7 @@ export const aiNewsPosts: NewsPost[] = [
     ],
     category: 'Technology',
     author: {
-      name: 'Dr. Lisa Park',
+      name: 'Dr. N. Levy',
       role: 'Head of AI Development'
     },
     publishedAt: '2026-01-30',
@@ -188,7 +188,7 @@ export const aiNewsPosts: NewsPost[] = [
     ],
     category: 'Product Updates',
     author: {
-      name: 'Jennifer Wong',
+      name: 'L. Mor',
       role: 'Co-founder'
     },
     publishedAt: '2026-01-30',
@@ -218,7 +218,7 @@ export const aiNewsPosts: NewsPost[] = [
     ],
     category: 'Security',
     author: {
-      name: 'Marcus Johnson',
+      name: 'E. Rosen',
       role: 'Lead Developer'
     },
     publishedAt: '2026-01-29',
@@ -247,7 +247,7 @@ export const aiNewsPosts: NewsPost[] = [
     ],
     category: 'Product Updates',
     author: {
-      name: 'David Chen',
+      name: 'R. Tal',
       role: 'Co-founder'
     },
     publishedAt: '2026-01-28',
@@ -276,7 +276,7 @@ export const aiNewsPosts: NewsPost[] = [
     ],
     category: 'Product Updates',
     author: {
-      name: 'Michael Torres',
+      name: 'Y. Oren',
       role: 'Co-founder'
     },
     publishedAt: '2026-01-27',
@@ -305,7 +305,7 @@ export const aiNewsPosts: NewsPost[] = [
     ],
     category: 'Industry Trends',
     author: {
-      name: 'Sarah Miller',
+      name: 'A. Dayan',
       role: 'Co-founder'
     },
     publishedAt: '2026-01-26',
