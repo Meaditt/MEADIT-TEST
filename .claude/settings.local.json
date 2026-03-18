@@ -20,7 +20,14 @@
       "Bash(which vercel:*)",
       "Bash(gh repo:*)",
       "Bash(git remote:*)",
-      "Bash(git add:* https://github.com/Meaditt/MEADIT-TEST)"
+      "Bash(git push:*)",
+      "Bash(npx next:*)",
+      "Bash(npm install:*)",
+      "Bash(npx playwright:*)",
+      "Bash(ls:*)",
+      "Bash(node:*)",
+      "Bash(git add:*)",
+      "Bash(vercel ls:*)"
     ]
   }
 }
